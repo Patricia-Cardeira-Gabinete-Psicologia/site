@@ -52,7 +52,7 @@ export default function Home() {
               margin: 0,
             }}
           >
-            ΧΡΥΣOΥΛΑ ΑΝΑΡΓ. ΤΟΥΡΛΙΔΑ
+            Patrícia Cardeira
           </h1>
           <p
             id="home-subtitle"
