@@ -1,7 +1,7 @@
 import DirectionsIcon from "@mui/icons-material/Directions";
 import { Button } from "@mui/material";
 
-const officeCoordinates = "JV8W+2G, Arrentela";
+const officeCoordinates = "Praceta Quinta das Parreiras 16, 2840-416 Arrentela, Portugal";
 const destination = encodeURIComponent(officeCoordinates);
 const mapUrl = `https://www.google.com/maps?q=${destination}&z=12&hl=pt-PT&output=embed`;
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
