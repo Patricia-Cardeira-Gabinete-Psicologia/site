@@ -39,7 +39,7 @@ export const colorPalette = {
 
 export const emailJsConfig = {
   serviceId: "service_257kkgg",
-  templateId: "service_257kkgg",
+  templateId: "template_yls49op",
   publicKey: "GEooVe-H1luqn8SEe",
 };
 
