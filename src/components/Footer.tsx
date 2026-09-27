@@ -16,7 +16,7 @@ const Footer = () => {
             color: "rgb(102, 102, 102)",
           }}
         >
-          &copy; {new Date().getFullYear()} Vagia Tourlida. All Rights Reserved
+          &copy; {new Date().getFullYear()} Vagia Tourlida. Todos os direitos reservados.
         </p>
       </div>
     </>

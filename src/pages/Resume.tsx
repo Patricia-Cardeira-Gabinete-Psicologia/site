@@ -26,7 +26,7 @@ export default function Resume() {
           id="resume-title"
           role="heading"
         >
-          Βιογραφικό
+          Biografia
         </Typography>
         <div
           style={{
@@ -99,7 +99,7 @@ export default function Resume() {
                 borderRadius: "4px",
                 width: "unset",
               }}
-              alt="Εικόνα του ψυχολόγου"
+              alt="Fotografia da psicóloga"
             />
 
             <Stack className="bottom-right-corner" alignItems="flex-end">
@@ -133,11 +133,11 @@ export default function Resume() {
               letterSpacing: '0.039em'
             }}
           >
-            Ως πιστοποιημένη Ψυχολόγος και Γνωσιακή Συμπεριφορική
-            Ψυχοθεραπεύτρια, είμαι επαγγελματικά εκπαιδευμένη να εφαρμόζω την
-            κλινική εξειδίκευση στη Γνωσιακή Συμπεριφορική Θεραπεία (CBT). Η
-            ακαδημαϊκή μου πορεία άρχισε με την ολοκλήρωση των προπτυχιακών μου
-            σπουδών στο Τμήμα Ψυχολογίας του Παντείου Πανεπιστημίου.
+            Sou psicóloga certificada e psicoterapeuta cognitivo-comportamental,
+            com formação profissional especializada na aplicação clínica da
+            Terapia Cognitivo-Comportamental (TCC). O meu percurso académico
+            começou com a conclusão da licenciatura no Departamento de Psicologia
+            da Universidade Panteion.
           </Typography>
           <Typography
             component="p"
@@ -149,13 +149,13 @@ export default function Resume() {
               letterSpacing: '0.039em'
             }}
           >
-            Η επιδίωξη εξειδίκευσης με οδήγησε στην παρακολούθηση του ετήσιου
-            προγράμματος στη Σχολική Ψυχολογία στο Πανεπιστήμιο Αιγαίου.
-            Επιπλέον, συμμετείχα ενεργά στο σεμινάριο Συμβουλευτικής Ψυχολογίας
-            στο Ινστιτούτο Ανάπτυξης Απασχόλησης. Για περαιτέρω εξειδίκευση,
-            ολοκλήρωσα διετή κατάρτιση στη Γνωσιακή και Συμπεριφορική
-            Ψυχοθεραπεία στο Κέντρο Εφαρμοσμένης Ψυχοθεραπείας και
-            Συμβουλευτικής (ΚΕ.ΨΥ.ΣΥ).
+            A procura de especialização levou-me a frequentar o programa anual
+            de Psicologia Escolar na Universidade do Egeu. Participei também
+            ativamente no seminário de Psicologia do Aconselhamento do Instituto
+            de Desenvolvimento do Emprego. Para aprofundar a minha especialização,
+            concluí uma formação de dois anos em Psicoterapia Cognitiva e
+            Comportamental no Centro de Psicoterapia Aplicada e Aconselhamento
+            (KE.PSY.SY).
           </Typography>
           <Typography
             component="p"
@@ -167,12 +167,12 @@ export default function Resume() {
               letterSpacing: '0.039em'
             }}
           >
-            Πραγματοποιώ τη θεραπευτική μου εργασία τόσο στον ιδιωτικό μου χώρο,
-            όπου διεξάγω ατομικές συνεδρίες με ενήλικες και εφήβους, όσο και
-            μέσω των συνεργασιών μου με ιδιωτικούς θεσμούς ψυχικής υγείας. Με
-            δέσμευση και επαγγελματικότητα, προσφέρω βοήθεια και καθοδήγηση στα
-            άτομα καθ’ όλη την διάρκεια της ψυχολογικής τους διαδρομής,
-            διασφαλίζοντας τον απόλυτο σεβασμό και εχεμύθεια.
+            Desenvolvo o meu trabalho terapêutico no meu consultório privado,
+            onde realizo consultas individuais com adultos e adolescentes, e em
+            colaboração com instituições privadas de saúde mental. Com dedicação
+            e profissionalismo, ofereço apoio e orientação ao longo de todo o
+            percurso de acompanhamento psicológico, garantindo o máximo respeito
+            e confidencialidade.
           </Typography>
         </Grid>
       </Grid>

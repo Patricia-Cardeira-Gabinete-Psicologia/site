@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default function Document() {
 
   return (
-    <Html lang="el" className='scroll-smooth' style={{scrollBehavior: 'smooth'}}>
+    <Html lang="pt-PT" className='scroll-smooth' style={{scrollBehavior: 'smooth'}}>
       <Head />
       <body>
         <Main />

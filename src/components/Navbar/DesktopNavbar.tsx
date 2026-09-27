@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
 import { NavbarProps } from ".";
 import Link from "next/link";
-const backgroundImg = "./static/logo.jpg";
+const backgroundImg = "./static/logo.png";
 
 export default function DesktopNavbar({
   menuOptions,
@@ -10,7 +10,7 @@ export default function DesktopNavbar({
 }: NavbarProps) {
   const logoEl = (
     <Link
-      aria-label= "Επιστροφή στην αρχική σελίδα"
+      aria-label="Voltar à página inicial"
       className="btn"
       href={
         typeof window !== "undefined"
@@ -18,7 +18,7 @@ export default function DesktopNavbar({
           : `/#home`
       }
       style={{ textDecoration: "none", color: "black" }}
-      onClick={()=>{onOptionClick('')}}
+      onClick={() => { onOptionClick('') }}
     >
       <Typography
         variant="h6"
@@ -46,7 +46,7 @@ export default function DesktopNavbar({
           ></div>
           <Stack>
             <Typography component="div" sx={{ fontWeight: 400 }}>
-              ΧΡΥΣΟΥΛΑ ΤΟΥΡΛΙΔΑ
+              Patrícia Cardeira
             </Typography>
           </Stack>
         </Stack>
@@ -56,7 +56,7 @@ export default function DesktopNavbar({
 
   return (
     <AppBar component="nav" style={{ backgroundColor: "white" }}>
-      <Toolbar sx={{justifyContent:'space-between'}}>
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
         {logoEl}
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
           {menuOptions.map((item) => (
@@ -64,9 +64,9 @@ export default function DesktopNavbar({
               key={item.label}
               sx={{
                 "&.MuiButtonBase-root": {
-                  color:'black',
+                  color: 'black',
                   textTransform: "none",
-                  backgroundColor:'transparent',
+                  backgroundColor: 'transparent',
                   "&:hover": {
                     backgroundColor: "transparent",
                     color: "#477B85",
@@ -83,7 +83,7 @@ export default function DesktopNavbar({
             >
               <Link
                 className="btn"
-                aria-label= "Επιστροφή στην αρχική σελίδα"
+                aria-label={item.label}
                 href={
                   typeof window !== "undefined"
                     ? `${window.location.origin}/#${item.routePath}`

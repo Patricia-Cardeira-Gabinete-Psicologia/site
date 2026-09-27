@@ -3,7 +3,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const backgroundImg = "./static/logo.jpg";
+  const backgroundImg = "./static/logo.png";
 
   return (
     <section
@@ -33,7 +33,7 @@ export default function Home() {
           justifyContent: "center",
           alignItems: "center",
         }}
-        aria-label="Background Image with Title and Subtitle"
+        aria-label="Imagem de fundo com título e subtítulo"
       >
         <div
           style={{
@@ -61,7 +61,7 @@ export default function Home() {
               fontSize: isMobile ? "14px" : "21px",
             }}
           >
-            ΨΥΧΟΛΟΓΟΣ - ΓΝΩΣΙΑΚΗ ΣΥΜΠΕΡΙΦΟΡΙΚΗ ΨΥΧΟΘΕΡΑΠΕΥΤΡΙΑ
+            PSICÓLOGA - PSICOTERAPEUTA COGNITIVO-COMPORTAMENTAL
           </p>
         </div>
       </div>

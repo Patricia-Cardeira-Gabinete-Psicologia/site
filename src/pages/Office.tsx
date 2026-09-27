@@ -54,7 +54,7 @@ export default function Office() {
           id="office-title"
           role="heading"
         >
-          Το Ιατρείο μας
+          O nosso consultório
         </Typography>
         <div
           style={{
@@ -82,7 +82,7 @@ export default function Office() {
     >
       {titleEl}
       <Box sx={{ width: "75%", margin: "auto", height: "fit-content" }}>
-        <ImageList variant="masonry" cols={3} gap={8} aria-label="Εικόνες γραφείου">
+        <ImageList variant="masonry" cols={3} gap={8} aria-label="Fotografias do consultório">
           {itemData.map((item, idx) => (
             <ImageListItem key={item.imgPath}>
               <Image
@@ -94,7 +94,7 @@ export default function Office() {
                   height: "auto",
                 }}
                 quality={100}
-                alt={`Εικόνα γραφείου ${idx + 1}`}
+                alt={`Fotografia do consultório ${idx + 1}`}
                 loading="lazy"
               />
             </ImageListItem>

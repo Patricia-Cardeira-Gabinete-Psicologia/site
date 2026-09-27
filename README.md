@@ -1,7 +1,7 @@
-# 📘 Dr. Chrysoula Tourlida's Portfolio
+# 📘 Dr. Patrícia Cardeira's Portfolio
 
 ## Introduction
-Dr. Chrysoula Tourlida is a renowned psychologist from Greece. This repository showcases her portfolio website, developed and designed to provide details about her professional journey.
+Dr. Patrícia Cardeira is a renowned psychologist from Greece. This repository showcases her portfolio website, developed and designed to provide details about her professional journey.
 
 ## 🌐 Web Development Information:
 
@@ -10,7 +10,7 @@ Dr. Chrysoula Tourlida is a renowned psychologist from Greece. This repository s
 - **Domain**: Custom domain 🌐
 
 ## 🔗 Access the Live Website:
-Experience the live version of Dr. Chrysoula Tourlida's portfolio by [clicking here](https://www.chrysoulatourlida.com/).
+Experience the live version of Dr. Patrícia Cardeira's portfolio by [clicking here](https://www.chrysoulatourlida.com/).
 
 ## 🖼️ Portfolio Previews:
 

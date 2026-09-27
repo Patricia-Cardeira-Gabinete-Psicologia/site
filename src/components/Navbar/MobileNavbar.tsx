@@ -14,7 +14,7 @@ import { useCallback, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavbarProps } from ".";
 import Link from "next/link";
-const backgroundImg = "./static/logo.jpg";
+const backgroundImg = "./static/logo.png";
 
 const MobileNavbar = ({
   menuOptions,
@@ -33,7 +33,7 @@ const MobileNavbar = ({
   const logoEl = (
     <Link
       className="btn"
-      aria-label= "Επιστροφή στην αρχική σελίδα"
+      aria-label="Voltar à página inicial"
       href={
         typeof window !== "undefined"
           ? `${window.location.origin}/#home`
@@ -67,7 +67,7 @@ const MobileNavbar = ({
           ></div>
           <Stack>
             <Typography component="div" sx={{ fontWeight: 400 }}>
-              ΧΡΥΣΟΥΛΑ ΤΟΥΡΛΙΔΑ
+              Patrícia Cardeira
             </Typography>
           </Stack>
         </Stack>
@@ -83,7 +83,7 @@ const MobileNavbar = ({
           <Link
             key={item.label}
             className="btn"
-            aria-label= "Επιστροφή στην αρχική σελίδα"
+            aria-label={item.label}
             href={
               typeof window !== "undefined"
                 ? `${window.location.origin}/#${item.routePath}`
@@ -146,7 +146,7 @@ const MobileNavbar = ({
           {logoEl}
           <IconButton
             color="inherit"
-            aria-label="open drawer"
+            aria-label="Abrir menu"
             edge="start"
             onClick={handleDrawerToggle}
             sx={{

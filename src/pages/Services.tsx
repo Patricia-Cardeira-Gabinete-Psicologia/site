@@ -20,16 +20,8 @@ function ServiceCard(data: any) {
         border: "1px solid #efefef",
         padding: "24px 16px",
         borderRadius: "16px",
-        height: isMobile
-          ? "fit-content"
-          : serviceItem.bullets
-          ? "100%"
-          : "212px",
-        maxHeight: isMobile
-          ? "fit-content"
-          : serviceItem.bullets
-          ? "600px"
-          : "212px",
+        height: isMobile ? "fit-content" : "100%",
+        minHeight: isMobile || serviceItem.bullets ? undefined : "212px",
         boxShadow: "9px 14px 42px -4px rgba(0,0,0,0.10)",
       }}
     >
@@ -127,7 +119,7 @@ export default function Services() {
           id="services-title"
           role="heading"
         >
-          Υπηρεσίες
+          Serviços
         </Typography>
         <div
           style={{

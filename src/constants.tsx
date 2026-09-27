@@ -43,25 +43,25 @@ export const emailJsConfig = {
   publicKey: "ksn1gG7FEpNVxXH13",
 };
 
-export const websiteUrl= 'https://localhost:3000'
+export const websiteUrl = 'https://localhost:3000'
 //----------------------------------------------------
 //Data
 export const menuOptions = [
-  { label: "Αρχική", routePath: "home" },
+  { label: "Início", routePath: "home" },
   {
-    label: "Βιογραφικό",
+    label: "Biografia",
     routePath: "resume",
   },
   {
-    label: "Υπηρεσίες",
+    label: "Serviços",
     routePath: "services",
   },
   {
-    label: "Το Ιατρείο μας",
+    label: "O nosso consultório",
     routePath: "office",
   },
   {
-    label: "Επικοινωνία",
+    label: "Contactos",
     routePath: "contact",
   },
 ];
@@ -69,33 +69,33 @@ export const menuOptions = [
 export const metadata: {
   title: string;
   description: string;
-  keywords:string;
+  keywords: string;
 } = {
-  title: "ΧΡΥΣΟΥΛΑ ΤΟΥΡΛΙΔΑ - ΨΥΧΟΛΟΓΟΣ",
-  description: "Χρυσούλα Τούρλιδα - Εξειδικευμένη Ψυχολόγος. Προσφέρει συμβουλευτική ψυχολογία, ψυχοθεραπεία, κλινική ψυχολογία, συνεδρίες ψυχολογίας, και ψυχική ευεξία. Ειδικότητα σε θεραπεία άγχους, κατάθλιψης, και παρέχει ψυχολογική βοήθεια και στήριξη.",
-  keywords:"Χρυσούλα Τούρλιδα, Ψυχολόγος, Συμβουλευτική ψυχολογία, Ψυχοθεραπεία, Κλινική ψυχολογία, Συνεδρίες ψυχολογίας, Συναισθηματική υποστήριξη, Ψυχική ευεξία, Παιδοψυχολόγος, Θεραπεία άγχους, Κατάθλιψη θεραπεία, Ψυχολογική βοήθεια, Ψυχολογική στήριξη, Ειδικευμένη ψυχολογική υπηρεσία"
+  title: "Patrícia Cardeira - PSICÓLOGA",
+  description: "Patrícia Cardeira - Psicóloga especializada. Oferece aconselhamento psicológico, psicoterapia, psicologia clínica e consultas de psicologia para promover o bem-estar mental. Especializada no tratamento da ansiedade e da depressão, presta ajuda e apoio psicológico.",
+  keywords: "Patrícia Cardeira, Psicóloga, Aconselhamento psicológico, Psicoterapia, Psicologia clínica, Consultas de psicologia, Apoio emocional, Bem-estar mental, Psicologia infantil, Tratamento da ansiedade, Tratamento da depressão, Ajuda psicológica, Apoio psicológico, Serviços especializados de psicologia"
 };
 
 
-export const services =  [
+export const services = [
   {
     icon: (
       <PsychologyIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Ψυχοθεραπεία",
+    title: "Psicoterapia",
     mainContent:
-      "Η συνεδρία ατομικής ψυχοθεραπείας αφορά την οικοδόμηση μιας υγιούς σχέσης εμπιστοσύνης και κατανόησης ανάμεσα στον θεραπευτή και τον   θεραπευόμενο. Ο τελευταίος μέσω ειλικρινούς επικοινωνίας και αποδοχής ενθαρρύνεται να αναγνωρίζει και να διαχειρίζεται τις συναισθηματικές  δυσκολίες. Ενδείκνυται για τα εξής πεδία:",
+      "A psicoterapia individual assenta na construção de uma relação saudável de confiança e compreensão entre o terapeuta e a pessoa em acompanhamento. Através de uma comunicação sincera e da aceitação, a pessoa é encorajada a reconhecer e a gerir as suas dificuldades emocionais. É indicada nas seguintes situações:",
     bullets: [
-      "Κατάθλιψη",
-      "Γενικευμένο άγχος",
-      "Κρίσεις πανικού",
-      "Κοινωνίκη φοβία",
-      "Αγοροφοβία",
-      "Διατροφικές διαταραχές",
-      "Τραύμα",
-      "Χαμηλή αυτοεκτίμηση",
+      "Depressão",
+      "Ansiedade generalizada",
+      "Ataques de pânico",
+      "Fobia social",
+      "Agorafobia",
+      "Perturbações alimentares",
+      "Trauma",
+      "Baixa autoestima",
     ],
   },
   {
@@ -104,15 +104,15 @@ export const services =  [
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Συμβουλευτική",
+    title: "Aconselhamento psicológico",
     mainContent:
-      "Η συμβουλευτική εστιάζει στην βελτίωση της καθημερινότητας και στην αναζήτηση λειτουργικών τρόπων διαχείρισης των προβληματων .Ενδείκνυται για τα εξής πεδία:",
+      "O aconselhamento psicológico centra-se na melhoria do dia a dia e na procura de formas eficazes de lidar com os problemas. É indicado nas seguintes situações:",
     bullets: [
-      "Πένθος",
-      "Καθημερινές δυσκολίες",
-      "Δυσκολίες διαπροσωπικών σχέσεων",
-      "Δυσκολίες διαπροσωπικής επικοινωνίας",
-      "Δυσκολίες σε σχέση με την γονεϊκότητα",
+      "Luto",
+      "Dificuldades do dia a dia",
+      "Dificuldades nas relações interpessoais",
+      "Dificuldades na comunicação interpessoal",
+      "Dificuldades relacionadas com a parentalidade",
     ],
   },
   {
@@ -121,9 +121,9 @@ export const services =  [
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Θεραπεία ζεύγους",
+    title: "Terapia de casal",
     mainContent:
-      "Βασικός στόχος είναι να δώσει στο ζευγάρι τα κατάλληλα εφόδια και εργαλεία ώστε να βελτιωθεί η μεταξύ τους επικοινωνία και να βρεθούν λύσεις σε τυχόν δυσλειτουργίες.",
+      "O principal objetivo é proporcionar ao casal os recursos e as ferramentas adequados para melhorar a comunicação e encontrar soluções para eventuais dificuldades na relação.",
   },
   {
     icon: (
@@ -131,9 +131,9 @@ export const services =  [
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Online συνεδρίες",
+    title: "Consultas à distância",
     mainContent:
-      " Όλες οι παραπάνω υπηρεσίες παρέχονται και διαδικτυακά είτε λόγω απόστασης είτε λόγω άλλων δυσκολιών.",
+      "Todos os serviços acima estão também disponíveis à distância, através da Internet, quando a distância ou outras dificuldades impedem a deslocação ao consultório.",
   },
 ];
 export const serviceInfoData = [
@@ -150,14 +150,14 @@ export const serviceInfoData = [
         }}
       />
     ),
-    title: "Διεύθυνση",
+    title: "Morada",
     value: (
       <Typography
         component="div"
         variant="body2"
         sx={{ opacity: 0.5, fontSize: "14px" }}
       >
-        Κυμοθόης 54,Δάφνη
+        Rua Kymothois, 54, Dafni
       </Typography>
     ),
   },
@@ -174,7 +174,7 @@ export const serviceInfoData = [
         }}
       />
     ),
-    title: "Ώρες λειτουργίας",
+    title: "Horário de funcionamento",
     value: (
       <Stack>
         <Typography
@@ -182,14 +182,14 @@ export const serviceInfoData = [
           variant="body2"
           sx={{ opacity: 0.5, fontSize: "14px" }}
         >
-          Δευτέρα έως Παρασκευή: 10π.μ.- 9μ.μ.
+          Segunda a sexta-feira: 10h00–21h00
         </Typography>
         <Typography
           component="div"
           variant="body2"
           sx={{ opacity: 0.5, fontSize: "14px" }}
         >
-          Σάββατο: 10π.μ.- 6μ.μ.
+          Sábado: 10h00–18h00
         </Typography>
       </Stack>
     ),
@@ -207,7 +207,7 @@ export const serviceInfoData = [
         }}
       />
     ),
-    title: "Email",
+    title: "Correio eletrónico",
     value: (
       <Typography
         component="div"
@@ -231,7 +231,7 @@ export const serviceInfoData = [
         }}
       />
     ),
-    title: "Τηλέφωνο",
+    title: "Telefone",
     value: (
       <Typography
         component="div"

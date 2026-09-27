@@ -21,7 +21,7 @@ import {
   serviceInfoData,
 } from "@/constants";
 import { useCallback, useMemo, useRef, useState } from "react";
-import { MapWithNoSSR } from "../components/Map";
+import { GoogleMap } from "../components/Map";
 
 const StyledTextarea = styled(TextareaAutosize)(
   ({ theme }) => `
@@ -114,12 +114,12 @@ export default function Contact() {
             (result) => {
               console.log("send");
               setFormData(null);
-              setNotificationMessage("Το μήνυμα σας στάλθηκε επιτυχώς");
+              setNotificationMessage("A sua mensagem foi enviada com sucesso.");
               setIsErrorMsg(false);
             },
             (error) => {
               setNotificationMessage(
-                "Κάποιο σφάλμα προέκυψε κατά την αποστολή. Παρακαλώ δοκιμάστε ξανά!"
+                "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente."
               );
               setIsErrorMsg(true);
             }
@@ -173,7 +173,7 @@ export default function Contact() {
         }}
         id="contact-title"
       >
-        Επικοινωνία{" "}
+        Contactos
       </Typography>
       <div
         style={{
@@ -268,10 +268,10 @@ export default function Contact() {
 
           <div
             style={{ height: "424px", width: "100%", marginBottom: "16px" }}
-            aria-label="Χάρτης"
+            aria-label="Mapa"
             role="region"
           >
-            <MapWithNoSSR />
+            <GoogleMap />
           </div>
         </div>
       </Grid>
@@ -343,7 +343,7 @@ export default function Contact() {
                 }}
                 id="form-title"
               >
-                Στείλτε μας ένα μήνυμα
+                Envie-nos uma mensagem
               </Typography>
               <Typography
                 component="div"
@@ -355,12 +355,12 @@ export default function Contact() {
                 }}
                 id="form-description"
               >
-                Μη διστάσετε να επικοινωνήσετε μαζί μας εάν έχετε οποιαδήποτε
-                περαιτέρω ερώτηση ή ανησυχία ή θέλετε να κλείσετε ένα ραντεβού
+                Não hesite em contactar-nos se tiver alguma dúvida ou preocupação,
+                ou se pretender marcar uma consulta.
               </Typography>
 
               <TextField
-                label="Ονοματεπώνυμο"
+                label="Nome completo"
                 onChange={(e) =>
                   handleOnFormFieldChange("name", e.target.value)
                 }
@@ -382,7 +382,7 @@ export default function Contact() {
                 error={nameError}
               />
               <TextField
-                label="Email"
+                label="Correio eletrónico"
                 onChange={(e) =>
                   handleOnFormFieldChange("email", e.target.value)
                 }
@@ -404,10 +404,10 @@ export default function Contact() {
               />
               <StyledTextarea
                 required
-                aria-label="Μήνυμα"
+                aria-label="Mensagem"
                 minRows={1}
                 maxRows={2}
-                placeholder="Παρακαλώ πληκτρολογήστε το μήνυμα σας"
+                placeholder="Por favor, escreva a sua mensagem"
                 onChange={(e) =>
                   handleOnFormFieldChange("message", e.target.value)
                 }
@@ -423,7 +423,7 @@ export default function Contact() {
               />
 
               <Button
-                aria-label="Αποστολή"
+                aria-label="Enviar"
                 variant="contained"
                 endIcon={<SendIcon />}
                 onClick={handleSubmit}
@@ -442,7 +442,7 @@ export default function Contact() {
                   },
                 }}
               >
-                ΑΠΟΣΤΟΛΗ
+                ENVIAR
               </Button>
             </Stack>
           </form>
