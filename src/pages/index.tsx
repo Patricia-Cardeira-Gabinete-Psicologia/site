@@ -5,6 +5,7 @@ import Resume from "./Resume";
 import Contact from "./Contact";
 import { metadata } from "@/constants";
 import Office from "./Office";
+import ProfessionalRegistration from "./ProfessionalRegistration";
 import { Stack } from "@mui/material";
 const LandingPage = () => {
   return (
@@ -24,6 +25,7 @@ const LandingPage = () => {
         <Services />
         <Office />
         <Contact />
+        <ProfessionalRegistration />
       </Stack>
     </>
   );

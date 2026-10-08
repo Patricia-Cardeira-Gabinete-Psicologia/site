@@ -61,6 +61,10 @@ export const menuOptions = [
     routePath: "office",
   },
   {
+    label: "Registo profissional",
+    routePath: "professional-registration",
+  },
+  {
     label: "Contactos",
     routePath: "contact",
   },
@@ -243,4 +247,3 @@ export const serviceInfoData = [
     ),
   },
 ];
-
