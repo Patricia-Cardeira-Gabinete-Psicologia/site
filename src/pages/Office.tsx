@@ -18,6 +18,9 @@ const itemData = [
     imgPath: "/static/office_2.jpg",
   },
   {
+    imgPath: "/static/office_3.jpg",
+  },
+  {
     imgPath: "/static/office_4.jpg",
   }
 ];
