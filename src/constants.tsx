@@ -157,43 +157,43 @@ export const serviceInfoData = [
         variant="body2"
         sx={{ opacity: 0.5, fontSize: "14px" }}
       >
-        Rua Kymothois, 54, Dafni
+        Praceta Quinta das Parreiras 16, 2840-416, Seixal, Portugal
       </Typography>
     ),
   },
-  {
-    icon: (
-      <AccessTimeFilledIcon
-        style={{
-          color: "white",
-          borderRadius: "4px",
-          height: "100%",
-          width: "100%",
-          background:
-            "linear-gradient(90deg, rgba(111,168,184,1) 0%, rgba(61,114,128,1) 100%)",
-        }}
-      />
-    ),
-    title: "Horário de funcionamento",
-    value: (
-      <Stack>
-        <Typography
-          component="div"
-          variant="body2"
-          sx={{ opacity: 0.5, fontSize: "14px" }}
-        >
-          Segunda a sexta-feira: 10h00–21h00
-        </Typography>
-        <Typography
-          component="div"
-          variant="body2"
-          sx={{ opacity: 0.5, fontSize: "14px" }}
-        >
-          Sábado: 10h00–18h00
-        </Typography>
-      </Stack>
-    ),
-  },
+  // {
+  //   icon: (
+  //     <AccessTimeFilledIcon
+  //       style={{
+  //         color: "white",
+  //         borderRadius: "4px",
+  //         height: "100%",
+  //         width: "100%",
+  //         background:
+  //           "linear-gradient(90deg, rgba(111,168,184,1) 0%, rgba(61,114,128,1) 100%)",
+  //       }}
+  //     />
+  //   ),
+  //   title: "Horário de funcionamento",
+  //   value: (
+  //     <Stack>
+  //       <Typography
+  //         component="div"
+  //         variant="body2"
+  //         sx={{ opacity: 0.5, fontSize: "14px" }}
+  //       >
+  //         Segunda a sexta-feira: 10h00–21h00
+  //       </Typography>
+  //       <Typography
+  //         component="div"
+  //         variant="body2"
+  //         sx={{ opacity: 0.5, fontSize: "14px" }}
+  //       >
+  //         Sábado: 10h00–18h00
+  //       </Typography>
+  //     </Stack>
+  //   ),
+  // },
   {
     icon: (
       <EmailIcon
@@ -207,14 +207,14 @@ export const serviceInfoData = [
         }}
       />
     ),
-    title: "Correio eletrónico",
+    title: "Email",
     value: (
       <Typography
         component="div"
         variant="body2"
         sx={{ opacity: 0.5, fontSize: "14px" }}
       >
-        tourlida.xrisoula@gmail.com
+        psicologa.patriciacardeira@gmail.com
       </Typography>
     ),
   },
@@ -231,14 +231,14 @@ export const serviceInfoData = [
         }}
       />
     ),
-    title: "Telefone",
+    title: "Telemóvel",
     value: (
       <Typography
         component="div"
         variant="body2"
         sx={{ opacity: 0.5, fontSize: "14px" }}
       >
-        +30 6987589167
+        +351 933707597
       </Typography>
     ),
   },

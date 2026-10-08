@@ -223,7 +223,7 @@ export default function Contact() {
           {serviceInfoData.map((serviceItem, idx) => (
             <div
               style={{
-                width: isMobile ? "100%" : "50%",
+                width: isMobile ? "100%" : "33.33%",
                 minWidth: "300px",
               }}
               key={`contact-card-${idx}`}

@@ -12,13 +12,10 @@ import Image from "next/image";
 
 const itemData = [
   {
-    imgPath: "/static/office_1.jpg",
-  },
-  {
     imgPath: "/static/office_2.jpg",
   },
   {
-    imgPath: "/static/office_3.jpg",
+    imgPath: "/static/office_1.jpg",
   },
   {
     imgPath: "/static/office_4.jpg",
@@ -59,7 +56,7 @@ export default function Office() {
 
   return (
     <section
-      className="section grid place-content-center min-h-screen bg-gray-100"
+      className="section flex flex-col items-center min-h-screen bg-gray-100"
       id="office"
       style={{
         height: "fit-content",
