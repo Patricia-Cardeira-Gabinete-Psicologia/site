@@ -1,5 +1,6 @@
 import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
+import { colorPalette } from "@/constants";
 
 export default function ProfessionalRegistration() {
   const theme = useTheme();
@@ -7,9 +8,12 @@ export default function ProfessionalRegistration() {
 
   return (
     <section
-      className="section flex flex-col items-center bg-gray-100"
+      className="section flex flex-col items-center"
       id="professional-registration"
-      style={{ padding: "64px 24px" }}
+      style={{
+        padding: "64px 24px",
+        backgroundColor: theme.palette.background.default,
+      }}
       aria-labelledby="professional-registration-title"
     >
       <Stack justifyContent="center" alignItems="center" mb="32px">
@@ -46,15 +50,17 @@ export default function ProfessionalRegistration() {
             height: { xs: "300px", sm: "320px" },
             boxSizing: "border-box",
             p: 3,
-            bgcolor: "white",
-            borderRadius: 1,
+            bgcolor: theme.palette.background.paper,
+            border: "1px solid #efefef",
+            borderRadius: "16px",
+            boxShadow: "9px 14px 42px -4px rgba(0,0,0,0.10)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Image
-            src="/static/opp_cedula.png"
+            src="/static/opp_cedula_cut.png"
             width={2048}
             height={819}
             alt="Cédula profissional da Ordem dos Psicólogos Portugueses"
@@ -71,8 +77,10 @@ export default function ProfessionalRegistration() {
             height: { xs: "300px", sm: "320px" },
             boxSizing: "border-box",
             p: 3,
-            bgcolor: "white",
-            borderRadius: 1,
+            bgcolor: theme.palette.background.paper,
+            border: "1px solid #efefef",
+            borderRadius: "16px",
+            boxShadow: "9px 14px 42px -4px rgba(0,0,0,0.10)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -87,7 +95,7 @@ export default function ProfessionalRegistration() {
             alt="Entidade Reguladora da Saúde (ERS)"
             style={{ width: "100%", maxWidth: "400px", height: "auto" }}
           />
-          <Typography sx={{ mt: 2 }}>
+          <Typography sx={{ mt: 2, color: colorPalette.main }}>
             Número de registo ERS: <strong>E184367</strong>
           </Typography>
         </Box>

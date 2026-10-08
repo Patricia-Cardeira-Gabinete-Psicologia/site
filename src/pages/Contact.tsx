@@ -14,7 +14,6 @@ import SendIcon from "@mui/icons-material/Send";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import emailjs from "@emailjs/browser";
 import {
-  blue,
   colorPalette,
   emailJsConfig,
   grey,
@@ -39,14 +38,12 @@ const StyledTextarea = styled(TextareaAutosize)(
   };
 
   &:hover {
-    border-color: ${blue[400]};
+    border-color: ${theme.palette.primary.main};
   }
 
   &:focus {
-    border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${
-      theme.palette.mode === "dark" ? blue[500] : blue[200]
-    };
+    border-color: ${theme.palette.primary.main};
+    box-shadow: 0 0 0 3px rgba(23, 136, 141, 0.2);
   }
 
   // firefox
@@ -280,12 +277,13 @@ export default function Contact() {
 
   return (
     <section
-      className="section grid place-content-center min-h-screen bg-gray-100"
+      className="section grid place-content-center min-h-screen"
       id="contact"
       style={{
         height: "fit-content",
         border: 0,
         padding: isMobile ? "64px 0px 0px 0px" : "64px 0 24px 0px",
+        backgroundColor: theme.palette.background.default,
       }}
       aria-labelledby="contact-title"
     >
@@ -320,8 +318,10 @@ export default function Contact() {
             style={{
               height: "100%",
               padding: "36px 48px",
-              boxShadow: "4px 5px 58px -1px rgba(0,0,0,0.22)",
-              borderRadius: "4px",
+              backgroundColor: theme.palette.background.paper,
+              border: "1px solid #efefef",
+              boxShadow: "9px 14px 42px -4px rgba(0,0,0,0.10)",
+              borderRadius: "16px",
               maxWidth: "450px",
               minWidth: "200px",
             }}
@@ -366,7 +366,7 @@ export default function Contact() {
                 }
                 required={true}
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 type="text"
                 inputProps={{ style: { fontSize: isMobile ? "15px" : "18px" },
               "aria-required": "true",
@@ -375,6 +375,12 @@ export default function Contact() {
               }}
                 sx={{
                   mb: 3,
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: theme.palette.primary.main,
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: theme.palette.primary.main,
+                  },
                 }}
                 fullWidth
                 value={formData?.name ?? ""}
@@ -388,7 +394,7 @@ export default function Contact() {
                 }
                 required={true}
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 type="email"
                 name="email"
                 inputProps={{ style: { fontSize: isMobile ? "15px" : "18px" },     
@@ -397,6 +403,12 @@ export default function Contact() {
                 "aria-errormessage":emailError ? "email-error" : undefined }}
                 sx={{
                   mb: 3,
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: theme.palette.primary.main,
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: theme.palette.primary.main,
+                  },
                 }}
                 fullWidth
                 value={formData?.email ?? ""}
@@ -433,12 +445,12 @@ export default function Contact() {
                   maxWidth: "250px",
                   borderRadius: "16px",
                   padding: "8px",
-                  backgroundColor: colorPalette.main, 
+                  backgroundColor: theme.palette.primary.main,
                   "&:hover": {
-                    backgroundColor: "#3D717E",
+                    backgroundColor: theme.palette.primary.dark,
                   },
                   "&:active": {
-                    backgroundColor: "#3D717E",
+                    backgroundColor: theme.palette.primary.dark,
                   },
                 }}
               >
