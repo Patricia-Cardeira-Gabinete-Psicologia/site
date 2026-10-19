@@ -49,7 +49,7 @@ export const websiteUrl = 'https://localhost:3000'
 export const menuOptions = [
   { label: "Início", routePath: "home" },
   {
-    label: "Biografia",
+    label: "Sobre mim",
     routePath: "resume",
   },
   {
@@ -57,12 +57,8 @@ export const menuOptions = [
     routePath: "services",
   },
   {
-    label: "O nosso consultório",
+    label: "Consultório",
     routePath: "office",
-  },
-  {
-    label: "Registo profissional",
-    routePath: "professional-registration",
   },
   {
     label: "Contactos",
@@ -75,9 +71,9 @@ export const metadata: {
   description: string;
   keywords: string;
 } = {
-  title: "Patrícia Cardeira - PSICÓLOGA",
-  description: "Patrícia Cardeira - Psicóloga especializada. Oferece aconselhamento psicológico, psicoterapia, psicologia clínica e consultas de psicologia para promover o bem-estar mental. Especializada no tratamento da ansiedade e da depressão, presta ajuda e apoio psicológico.",
-  keywords: "Patrícia Cardeira, Psicóloga, Aconselhamento psicológico, Psicoterapia, Psicologia clínica, Consultas de psicologia, Apoio emocional, Bem-estar mental, Psicologia infantil, Tratamento da ansiedade, Tratamento da depressão, Ajuda psicológica, Apoio psicológico, Serviços especializados de psicologia"
+  title: "Patrícia Cardeira | Psicóloga no Seixal e online",
+  description: "Consultas de psicologia com Patrícia Cardeira, no Seixal e online. Acompanhamento de adultos e adolescentes, aconselhamento psicológico e terapia de casal.",
+  keywords: "Patrícia Cardeira, psicóloga no Seixal, consultas de psicologia, acompanhamento psicológico, adultos e adolescentes, aconselhamento psicológico, psicoterapia, terapia de casal, consultas online"
 };
 
 
@@ -90,7 +86,7 @@ export const services = [
     ),
     title: "Psicoterapia",
     mainContent:
-      "A psicoterapia individual assenta na construção de uma relação saudável de confiança e compreensão entre o terapeuta e a pessoa em acompanhamento. Através de uma comunicação sincera e da aceitação, a pessoa é encorajada a reconhecer e a gerir as suas dificuldades emocionais. É indicada nas seguintes situações:",
+      "Nas sessões individuais, trabalhamos para compreender o que está a causar sofrimento, reconhecer padrões de pensamento e comportamento e encontrar formas de lidar com as dificuldades. O acompanhamento de adultos e adolescentes pode abordar:",
     bullets: [
       "Depressão",
       "Ansiedade generalizada",
@@ -110,13 +106,13 @@ export const services = [
     ),
     title: "Aconselhamento psicológico",
     mainContent:
-      "O aconselhamento psicológico centra-se na melhoria do dia a dia e na procura de formas eficazes de lidar com os problemas. É indicado nas seguintes situações:",
+      "Um espaço para falar sobre uma dificuldade concreta, ponderar decisões e encontrar formas de enfrentar mudanças pessoais, familiares ou profissionais. O aconselhamento pode ajudar em situações como:",
     bullets: [
-      "Luto",
-      "Dificuldades do dia a dia",
-      "Dificuldades nas relações interpessoais",
-      "Dificuldades na comunicação interpessoal",
-      "Dificuldades relacionadas com a parentalidade",
+      "Luto e perdas",
+      "Mudanças e desafios do dia a dia",
+      "Dificuldades nas relações",
+      "Dificuldades de comunicação",
+      "Desafios da parentalidade",
     ],
   },
   {
@@ -127,7 +123,7 @@ export const services = [
     ),
     title: "Terapia de casal",
     mainContent:
-      "O principal objetivo é proporcionar ao casal os recursos e as ferramentas adequados para melhorar a comunicação e encontrar soluções para eventuais dificuldades na relação.",
+      "Nas consultas de casal, há espaço para ouvir os dois pontos de vista, compreender os conflitos e trabalhar a comunicação. O objetivo é ajudar o casal a clarificar o que precisa e a tomar decisões sobre a relação.",
   },
   {
     icon: (
@@ -135,9 +131,9 @@ export const services = [
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Consultas à distância",
+    title: "Consultas de psicologia online",
     mainContent:
-      "Todos os serviços acima estão também disponíveis à distância, através da Internet, quando a distância ou outras dificuldades impedem a deslocação ao consultório.",
+      "O acompanhamento à distância permite realizar as sessões sem se deslocar ao consultório no Seixal. Para saber se esta modalidade se adequa ao que procura e esclarecer como funcionam as consultas, entre em contacto comigo.",
   },
 ];
 export const serviceInfoData = [

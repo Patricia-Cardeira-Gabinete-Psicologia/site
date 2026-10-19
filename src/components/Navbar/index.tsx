@@ -19,7 +19,7 @@ export interface NavbarProps {
 
 export default function Navbar() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [selectedSectionId,setSelectedSectionId] = useState<string | null>(null);
 
   const handleOptionClick=useCallback((id:string)=>{

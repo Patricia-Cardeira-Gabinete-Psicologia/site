@@ -1,49 +1,40 @@
-import { Box, Button, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
 export default function Home() {
-  const theme = useTheme();
-
   return (
     <Box
       component="section"
       id="home"
       aria-labelledby="home-title"
       sx={{
-        minHeight: { xs: "auto", md: "calc(100vh - 64px)" },
+        minHeight: { xs: "auto", md: "min(780px, 100vh)" },
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        px: { xs: 3, sm: 4, md: 6 },
-        pt: { xs: "104px", md: "96px" },
-        pb: { xs: 8, md: 8 },
-        backgroundColor: theme.palette.background.default,
+        px: { xs: 2.5, md: 4 },
+        pt: { xs: "104px", md: "116px" },
+        pb: { xs: 7, md: 10 },
+        bgcolor: "background.default",
       }}
     >
       <Stack
         direction={{ xs: "column", md: "row" }}
-        spacing={{ xs: 5, md: 8 }}
+        spacing={{ xs: 5, md: 9 }}
         alignItems="center"
         justifyContent="space-between"
-        sx={{ width: "100%", maxWidth: "1200px", mx: "auto" }}
+        sx={{ width: "100%", maxWidth: 1160, mx: "auto" }}
       >
         <Stack
-          spacing={2.5}
-          alignItems={{ xs: "center", md: "flex-start" }}
-          textAlign={{ xs: "center", md: "left" }}
-          sx={{ flex: 1, maxWidth: "580px" }}
+          spacing={{ xs: 2, md: 2.5 }}
+          alignItems="flex-start"
+          textAlign="left"
+          sx={{ flex: 1, maxWidth: 590, width: "100%" }}
         >
           <Typography
             component="p"
-            sx={{
-              color: theme.palette.primary.main,
-              fontSize: "14px",
-              fontWeight: 600,
-              letterSpacing: "0.16em",
-              textTransform: "uppercase",
-            }}
+            sx={{ color: "primary.main", fontSize: 14, fontWeight: 600, mb: 0.5 }}
           >
-            Psicologia clínica
+            Consultas de psicologia
           </Typography>
 
           <Typography
@@ -51,9 +42,12 @@ export default function Home() {
             component="h1"
             sx={{
               color: "text.primary",
-              fontSize: { xs: "42px", sm: "52px", md: "60px" },
-              fontWeight: 300,
-              lineHeight: 1.12,
+              fontFamily: 'Georgia, "Times New Roman", serif',
+              fontSize: { xs: "clamp(2.55rem, 11.5vw, 3.4rem)", md: "4.5rem" },
+              fontWeight: 400,
+              letterSpacing: "-0.045em",
+              lineHeight: 1.02,
+              maxWidth: "100%",
             }}
           >
             Patrícia Cardeira
@@ -61,47 +55,30 @@ export default function Home() {
 
           <Typography
             component="p"
-            sx={{
-              color: theme.palette.primary.main,
-              fontSize: { xs: "18px", md: "21px" },
-              fontWeight: 400,
-              lineHeight: 1.5,
-            }}
+            sx={{ color: "primary.dark", fontSize: { xs: 18, md: 21 }, fontWeight: 600, lineHeight: 1.45 }}
           >
-            Psicóloga clínica e psicoterapeuta cognitivo-comportamental
+            Acompanhamento psicológico para adultos e adolescentes
           </Typography>
 
           <Typography
             component="p"
-            sx={{
-              maxWidth: "520px",
-              color: "text.secondary",
-              fontSize: { xs: "16px", md: "18px" },
-              fontWeight: 300,
-              lineHeight: 1.8,
-            }}
+            sx={{ maxWidth: 500, color: "text.secondary", fontSize: { xs: 16, md: 17 }, lineHeight: 1.75 }}
           >
-            Acompanhamento psicológico para adultos e adolescentes, num espaço
-            de confiança, respeito e confidencialidade.
+            Sou Patrícia Cardeira, psicóloga. Nas consultas, podemos falar sobre o
+            que sente, compreender as suas dificuldades e trabalhar formas de lidar
+            com o que está a viver, ao seu ritmo.
           </Typography>
 
           <Stack
             direction={{ xs: "column", sm: "row" }}
-            spacing={2}
+            spacing={1.5}
             sx={{ pt: 1, width: { xs: "100%", sm: "auto" } }}
           >
             <Button
               component="a"
               href="#services"
               variant="contained"
-              sx={{
-                borderRadius: "999px",
-                px: 3,
-                py: 1.25,
-                backgroundColor: theme.palette.primary.main,
-                textTransform: "none",
-                "&:hover": { backgroundColor: theme.palette.primary.dark },
-              }}
+              sx={{ minHeight: 48, px: 3, borderRadius: "4px", boxShadow: "none" }}
             >
               Conheça os serviços
             </Button>
@@ -109,69 +86,49 @@ export default function Home() {
               component="a"
               href="#contact"
               variant="outlined"
-              sx={{
-                borderRadius: "999px",
-                px: 3,
-                py: 1.25,
-                borderColor: theme.palette.primary.main,
-                color: theme.palette.primary.main,
-                textTransform: "none",
-                "&:hover": {
-                  borderColor: theme.palette.primary.dark,
-                  backgroundColor: "rgba(23, 136, 141, 0.06)",
-                },
-              }}
+              sx={{ minHeight: 48, px: 3, borderRadius: "4px", borderWidth: "1.5px" }}
             >
-              Entre em contacto
+              Pedir uma consulta
             </Button>
           </Stack>
 
-          <Typography
-            component="p"
-            variant="body2"
-            sx={{ pt: 1, color: "text.secondary", fontSize: "14px" }}
-          >
-            Consultas no Seixal e à distância
+          <Typography component="p" sx={{ pt: 0.5, color: "text.secondary", fontSize: 14 }}>
+            Consultas presenciais no Seixal e online
           </Typography>
         </Stack>
 
         <Box
           sx={{
             position: "relative",
-            width: { xs: "min(100%, 360px)", md: "min(38vw, 440px)" },
-            maxWidth: "440px",
+            width: { xs: "min(100%, 390px)", md: "min(40vw, 470px)" },
+            maxWidth: 470,
             aspectRatio: "4 / 5",
             flexShrink: 0,
+            isolation: "isolate",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              zIndex: -1,
+              inset: { xs: "12% -12px -12px 12%", md: "12% -22px -22px 12%" },
+              bgcolor: "#dce8e3",
+              borderTopRightRadius: "88px",
+            },
           }}
         >
-          <Box
-            aria-hidden="true"
-            sx={{
-              position: "absolute",
-              inset: "8% -4% -4% 8%",
-              borderRadius: "48% 48% 16px 16px",
-              backgroundColor: "rgba(23, 136, 141, 0.12)",
-            }}
-          />
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              overflow: "hidden",
-              border: "6px solid #fff",
-              borderRadius: "48% 48% 16px 16px",
-              boxShadow: "0 18px 48px rgba(36, 67, 70, 0.16)",
-            }}
-          >
+          <Box sx={{ position: "absolute", inset: 0, overflow: "hidden", borderTopRightRadius: "88px" }}>
             <Image
               src="/static/me.jpg"
-              alt="Patrícia Cardeira, psicóloga clínica"
+              alt="Patrícia Cardeira, psicóloga"
               fill
               priority
-              sizes="(max-width: 900px) 80vw, 440px"
+              sizes="(max-width: 900px) 88vw, 470px"
               style={{ objectFit: "cover", objectPosition: "center 32%" }}
             />
           </Box>
+          <Box
+            aria-hidden="true"
+            sx={{ position: "absolute", right: 0, bottom: 0, width: "8px", height: "34%", bgcolor: "primary.main" }}
+          />
         </Box>
       </Stack>
     </Box>

@@ -1,487 +1,194 @@
-import Grid from "@mui/material/Grid";
+import { FormEvent, useRef, useState } from "react";
 import {
   Alert,
+  Box,
   Button,
+  Grid,
   Snackbar,
   Stack,
   TextField,
   Typography,
-  styled,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import SendIcon from "@mui/icons-material/Send";
-import TextareaAutosize from "@mui/base/TextareaAutosize";
 import emailjs from "@emailjs/browser";
-import {
-  colorPalette,
-  emailJsConfig,
-  grey,
-  serviceInfoData,
-} from "@/constants";
-import { useCallback, useMemo, useRef, useState } from "react";
-import { GoogleMap } from "../components/Map";
+import { emailJsConfig } from "@/constants";
+import { GoogleMap } from "@/components/Map";
+import SectionHeading from "@/components/SectionHeading";
 
-const StyledTextarea = styled(TextareaAutosize)(
-  ({ theme }) => `
-  width: 100%;
-  font-family: IBM Plex Sans, sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  padding: 12px;
-  border-radius: 12px 12px 0 12px;
-  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  box-shadow: 0px 2px 2px ${
-    theme.palette.mode === "dark" ? grey[900] : grey[50]
-  };
-
-  &:hover {
-    border-color: ${theme.palette.primary.main};
-  }
-
-  &:focus {
-    border-color: ${theme.palette.primary.main};
-    box-shadow: 0 0 0 3px rgba(23, 136, 141, 0.2);
-  }
-
-  // firefox
-  &:focus-visible {
-    outline: 0;
-  }
-`
-);
-
-interface FormData {
-  name?: string;
-  email?: string;
-  message?: string;
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
 }
 
+const emptyForm: ContactFormData = { name: "", email: "", message: "" };
+
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData | null>(null);
-  const form = useRef(null);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [formData, setFormData] = useState<ContactFormData>(emptyForm);
+  const [notification, setNotification] = useState<{ message: string; error: boolean } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const [notificationMessage, setNotificationMessage] = useState<string | null>(
-    null
-  );
-  const [isErrorMsg, setIsErrorMsg] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<boolean>(false);
-  const [nameError, setNameError] = useState<boolean>(false);
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!formRef.current) return;
 
-  const validateEmail = useCallback((email?: string | null) => {
-    let validRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    return email && email.toLowerCase().match(validRegex) != null;
-  }, []);
-
-  const handleSubmit = useCallback(
-    (e: any) => {
-      e.preventDefault();
-      const isEmailValid = validateEmail(formData?.email);
-
-      setEmailError(false);
-      setNameError(false);
-
-      if (!validateEmail(formData?.email)) {
-        setEmailError(true);
-      }
-      if (formData?.name === "") {
-        setNameError(true);
-      }
-
-      if (
-        form.current &&
-        formData &&
-        formData.name !== "" &&
-        formData.message !== "" &&
-        isEmailValid
-      ) {
-        emailjs
-          .sendForm(
-            emailJsConfig.serviceId,
-            emailJsConfig.templateId,
-            form.current,
-            emailJsConfig.publicKey
-          )
-          .then(
-            (result) => {
-              console.log("send");
-              setFormData(null);
-              setNotificationMessage("A sua mensagem foi enviada com sucesso.");
-              setIsErrorMsg(false);
-            },
-            (error) => {
-              setNotificationMessage(
-                "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente."
-              );
-              setIsErrorMsg(true);
-            }
-          );
-      }
-    },
-    [formData]
-  );
-
-  const handleClose = useCallback(
-    (event: React.SyntheticEvent | Event, reason?: string) => {
-      if (reason === "clickaway") {
-        return;
-      }
-      setIsErrorMsg(false);
-      setNotificationMessage(null);
-    },
-    []
-  );
-
-  const handleOnFormFieldChange = useCallback(
-    (keyToBeUpdated: string, value: string) => {
-      if (keyToBeUpdated === "email") {
-        let isValidEmail = validateEmail(value);
-        let debounceTimer;
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(
-          () => setEmailError(!isValidEmail),
-          1000
-        );
-      }
-      setFormData({
-        ...formData,
-        [keyToBeUpdated]: value,
+    setIsSubmitting(true);
+    try {
+      await emailjs.sendForm(
+        emailJsConfig.serviceId,
+        emailJsConfig.templateId,
+        formRef.current,
+        emailJsConfig.publicKey
+      );
+      setNotification({ message: "A sua mensagem foi enviada com sucesso.", error: false });
+      setFormData(emptyForm);
+      formRef.current.reset();
+    } catch {
+      setNotification({
+        message: "Não foi possível enviar a mensagem. Tente novamente ou contacte-me por telefone ou email.",
+        error: true,
       });
-    },
-    [formData]
-  );
-
-  const isNotificationOpen = notificationMessage !== null;
-
-  const titleEl = useMemo(() => (
-    <Stack justifyContent="center" alignItems="center" mb="32px">
-      <Typography
-        component="div"
-        sx={{
-          width: "100%",
-          textAlign: "center",
-          fontWeight: 300,
-          fontSize: isMobile ? "32px" : "36px",
-        }}
-        id="contact-title"
-      >
-        Contactos
-      </Typography>
-      <div
-        style={{
-          marginTop: "16px",
-          height: "4px",
-          width: "262px",
-          background:
-            "linear-gradient(90deg, rgba(111,168,184,1) 0%, rgba(61,114,128,1) 100%)",
-        }}
-      ></div>
-    </Stack>
-  ), [isMobile]);
-
-  const col2 = useMemo(() => (
-    <Grid
-      container
-      spacing={2}
-      sx={{
-        "&.MuiGrid-root": {
-          padding: "36px 0",
-          width: "100%",
-          marginLeft: isMobile ? "0" : "-16px",
-          margin: isMobile ? "0" : "unset",
-        },
-      }}
-    >
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        sx={{
-          padding: "0 !important",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            width: isMobile ? "100%" : "90%",
-            margin: "auto",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {serviceInfoData.map((serviceItem, idx) => (
-            <div
-              style={{
-                width: isMobile ? "100%" : "33.33%",
-                minWidth: "300px",
-              }}
-              key={`contact-card-${idx}`}
-            >
-              <Stack
-                style={{
-                  margin: "8px 0px",
-                  width: "300px",
-                  minWidth: "300px",
-                  height: "96px",
-                }}
-              >
-                <Stack direction="row" alignItems="flex-start">
-                  <div
-                    style={{
-                      height: isMobile ? "24px" : "30px",
-                      width: isMobile ? "24px" : "30px",
-                      position: "relative",
-                      top: isMobile ? "2px" : "4px",
-                    }}
-                  >
-                    {serviceItem.icon}
-                  </div>
-                  <Stack sx={{ ml: "8px" }}>
-                    <Typography
-                      component="div"
-                      variant="subtitle1"
-                      sx={{
-                        color: colorPalette.main, 
-                        opacity: 0.9, // Adjust opacity for better readability
-                        fontSize: isMobile ? "15px" : "19px",
-                      }}
-                    >
-                      {serviceItem.title}
-                    </Typography>
-                    {serviceItem.value}
-                  </Stack>
-                </Stack>
-              </Stack>
-            </div>
-          ))}
-
-          <div
-            style={{ height: "424px", width: "100%", marginBottom: "16px" }}
-            aria-label="Mapa"
-            role="region"
-          >
-            <GoogleMap />
-          </div>
-        </div>
-      </Grid>
-    </Grid>
-  ), [isMobile]);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
-      className="section grid place-content-center min-h-screen"
+      className="content-section"
       id="contact"
-      style={{
-        height: "fit-content",
-        border: 0,
-        padding: isMobile ? "64px 0px 0px 0px" : "64px 0 24px 0px",
-        backgroundColor: theme.palette.background.default,
-      }}
       aria-labelledby="contact-title"
+      style={{ backgroundColor: "#e6eeea" }}
     >
-      {titleEl}
-      <Grid
-        container
-        spacing={2}
-        sx={{
-          "&.MuiGrid-root": {
-            padding: "36px 0 0 0",
-            width: isMobile ? "85%" : "100%",
-            margin: isMobile ? "auto" : "unset",
-          },
-        }}
-      >
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={4}
-          sx={{
-            padding: "0 !important",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <form
-            ref={form}
-            autoComplete="off"
-            onSubmit={handleSubmit}
-            style={{
-              height: "100%",
-              padding: "36px 48px",
-              backgroundColor: theme.palette.background.paper,
-              border: "1px solid #efefef",
-              boxShadow: "9px 14px 42px -4px rgba(0,0,0,0.10)",
-              borderRadius: "16px",
-              maxWidth: "450px",
-              minWidth: "200px",
-            }}
-            aria-describedby="form-description"
-          >
-            <Stack
-              sx={{
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                component="div"
-                sx={{
-                  mb: 1,
-                  width: "100%",
-                  color: colorPalette.main, // Ensure good contrast
-                  fontSize: isMobile ? "19px" : "24px",
-                  textWrap: "nowrap",
-                }}
-                id="form-title"
-              >
-                Envie-nos uma mensagem
-              </Typography>
-              <Typography
-                component="div"
-                variant="caption"
-                sx={{
-                  opacity: "0.7", // Adjust opacity for better readability
-                  mb: 6,
-                  fontSize: isMobile ? "13px" : "16px",
-                }}
-                id="form-description"
-              >
-                Não hesite em contactar-nos se tiver alguma dúvida ou preocupação,
-                ou se pretender marcar uma consulta.
-              </Typography>
-
-              <TextField
-                label="Nome completo"
-                onChange={(e) =>
-                  handleOnFormFieldChange("name", e.target.value)
-                }
-                required={true}
-                variant="outlined"
-                color="primary"
-                type="text"
-                inputProps={{ style: { fontSize: isMobile ? "15px" : "18px" },
-              "aria-required": "true",
-              "aria-invalid": nameError,
-              "aria-errormessage":nameError ? "name-error" : undefined
-              }}
-                sx={{
-                  mb: 3,
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: theme.palette.primary.main,
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: theme.palette.primary.main,
-                  },
-                }}
-                fullWidth
-                value={formData?.name ?? ""}
-                name="name"
-                error={nameError}
-              />
-              <TextField
-                label="Correio eletrónico"
-                onChange={(e) =>
-                  handleOnFormFieldChange("email", e.target.value)
-                }
-                required={true}
-                variant="outlined"
-                color="primary"
-                type="email"
-                name="email"
-                inputProps={{ style: { fontSize: isMobile ? "15px" : "18px" },     
-                 "aria-required": "true",
-                "aria-invalid": emailError,
-                "aria-errormessage":emailError ? "email-error" : undefined }}
-                sx={{
-                  mb: 3,
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: theme.palette.primary.main,
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: theme.palette.primary.main,
-                  },
-                }}
-                fullWidth
-                value={formData?.email ?? ""}
-                error={emailError}
-              />
-              <StyledTextarea
-                required
-                aria-label="Mensagem"
-                minRows={1}
-                maxRows={2}
-                placeholder="Por favor, escreva a sua mensagem"
-                onChange={(e) =>
-                  handleOnFormFieldChange("message", e.target.value)
-                }
-                value={formData?.message ?? ""}
-                sx={{
-                  mb: 6,
-                  fontSize: isMobile ? "15px" : "18px",
-                  minHeight: "150px",
-                  maxHeight: "250px",
-                }}
-                name="message"
-                aria-required="true"
-              />
-
-              <Button
-                aria-label="Enviar"
-                variant="contained"
-                endIcon={<SendIcon />}
-                onClick={handleSubmit}
-                role="button"
-                sx={{
-                  minWidth: "200px",
-                  maxWidth: "250px",
-                  borderRadius: "16px",
-                  padding: "8px",
-                  backgroundColor: theme.palette.primary.main,
-                  "&:hover": {
-                    backgroundColor: theme.palette.primary.dark,
-                  },
-                  "&:active": {
-                    backgroundColor: theme.palette.primary.dark,
-                  },
-                }}
-              >
-                ENVIAR
-              </Button>
+      <div className="section-inner">
+        <SectionHeading id="contact-title">Contactos</SectionHeading>
+        <Typography component="p" sx={{ mb: 4, maxWidth: 760, color: "text.secondary", fontSize: 16, lineHeight: 1.75 }}>
+          Se procura acompanhamento psicológico para si ou terapia de casal, entre
+          em contacto comigo para esclarecer dúvidas ou pedir uma consulta no Seixal
+          ou online.
+        </Typography>
+        <Grid container spacing={{ xs: 5, lg: 8 }} alignItems="flex-start">
+          <Grid item xs={12} lg={5} sx={{ order: { xs: 2, lg: 1 } }}>
+            <Stack spacing={0}>
+              <Box sx={{ display: "flex", gap: 2, py: 2, borderBottom: "1px solid #cbd9d3" }}>
+                <PlaceOutlinedIcon aria-hidden="true" sx={{ mt: "2px", color: "primary.main" }} />
+                <Box>
+                  <Typography component="h3" sx={{ mb: 0.5, fontSize: 14, fontWeight: 700 }}>
+                    Consultório
+                  </Typography>
+                  <Typography sx={{ color: "text.secondary", fontSize: 15, lineHeight: 1.6 }}>
+                    Praceta Quinta das Parreiras 16, 2840-416, Seixal, Portugal
+                  </Typography>
+                </Box>
+              </Box>
+              <Box sx={{ display: "flex", gap: 2, py: 2, borderBottom: "1px solid #cbd9d3" }}>
+                <EmailOutlinedIcon aria-hidden="true" sx={{ mt: "2px", color: "primary.main" }} />
+                <Box>
+                  <Typography component="h3" sx={{ mb: 0.5, fontSize: 14, fontWeight: 700 }}>
+                    Email
+                  </Typography>
+                  <Typography component="a" href="mailto:psicologa.patriciacardeira@gmail.com" sx={{ color: "text.secondary", fontSize: 15, overflowWrap: "anywhere", "&:hover": { color: "primary.dark" } }}>
+                    psicologa.patriciacardeira@gmail.com
+                  </Typography>
+                </Box>
+              </Box>
+              <Box sx={{ display: "flex", gap: 2, py: 2 }}>
+                <PhoneOutlinedIcon aria-hidden="true" sx={{ mt: "2px", color: "primary.main" }} />
+                <Box>
+                  <Typography component="h3" sx={{ mb: 0.5, fontSize: 14, fontWeight: 700 }}>
+                    Telefone
+                  </Typography>
+                  <Typography component="a" href="tel:+351933707597" sx={{ color: "text.secondary", fontSize: 15, "&:hover": { color: "primary.dark" } }}>
+                    +351 933 707 597
+                  </Typography>
+                </Box>
+              </Box>
             </Stack>
-          </form>
+
+            <Box
+              role="region"
+              aria-label="Mapa da localização do consultório"
+              sx={{ height: { xs: 260, md: 300 }, mt: 2, overflow: "hidden", bgcolor: "#d6e0dc" }}
+            >
+              <GoogleMap />
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} lg={7} sx={{ order: { xs: 1, lg: 2 } }}>
+            <Box
+              component="form"
+              ref={formRef}
+              autoComplete="on"
+              onSubmit={handleSubmit}
+              sx={{ bgcolor: "background.paper", borderLeft: { xs: "0", md: "4px solid #176b6e" }, p: { xs: 2.5, sm: 4, md: 5 } }}
+            >
+              <Typography component="h3" sx={{ mb: 1, fontFamily: 'Georgia, "Times New Roman", serif', fontSize: 27 }}>
+                Vamos falar?
+              </Typography>
+              <Typography id="form-description" sx={{ mb: 3, maxWidth: 470, color: "text.secondary", fontSize: 15 }}>
+                Indique como posso ajudar e se prefere uma consulta presencial ou
+                online. Não precisa de partilhar informação clínica detalhada neste
+                primeiro contacto. O envio da mensagem é um pedido de contacto, não
+                uma marcação confirmada.
+              </Typography>
+
+              <Stack spacing={2}>
+                <TextField
+                  label="Nome completo"
+                  name="name"
+                  autoComplete="name"
+                  required
+                  fullWidth
+                  value={formData.name}
+                  onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
+                />
+                <TextField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  fullWidth
+                  value={formData.email}
+                  onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
+                />
+                <TextField
+                  label="Mensagem"
+                  name="message"
+                  required
+                  fullWidth
+                  multiline
+                  minRows={5}
+                  value={formData.message}
+                  onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  disabled={isSubmitting}
+                  endIcon={<SendIcon />}
+                  sx={{ alignSelf: { xs: "stretch", sm: "flex-start" }, minHeight: 48, px: 3, borderRadius: "4px", boxShadow: "none" }}
+                >
+                  {isSubmitting ? "A enviar…" : "Enviar mensagem"}
+                </Button>
+              </Stack>
+            </Box>
+          </Grid>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={8}
-          sx={{
-            padding: "0 !important",
-          }}
-        >
-          {col2}
-        </Grid>
-      </Grid>
+      </div>
 
       <Snackbar
-        open={isNotificationOpen}
-        autoHideDuration={2000}
-        onClose={handleClose}
+        open={notification !== null}
+        autoHideDuration={5000}
+        onClose={() => setNotification(null)}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        role="alert"
       >
-        <Alert severity={isErrorMsg ? "error" : "success"} role="alert">
-          {notificationMessage}
+        <Alert severity={notification?.error ? "error" : "success"} onClose={() => setNotification(null)}>
+          {notification?.message}
         </Alert>
       </Snackbar>
     </section>
