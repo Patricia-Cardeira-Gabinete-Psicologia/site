@@ -7,6 +7,9 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
 import GroupIcon from "@mui/icons-material/Group";
 import LanguageIcon from "@mui/icons-material/Language";
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
+import ExtensionIcon from '@mui/icons-material/Extension';
+import SchoolIcon from '@mui/icons-material/School';
 
 export const blue = {
   100: "#DAECFF",
@@ -80,60 +83,60 @@ export const metadata: {
 export const services = [
   {
     icon: (
+      <ExtensionIcon
+        sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
+      />
+    ),
+    title: "Psicologia para Crianças e Adolescentes",
+    mainContent:
+      "Acompanhamento de crianças e adolescentes nas suas dificuldades emocionais, comportamentais e relacionais. Num espaço adaptado à idade e às necessidades de cada um, a conversa e o brincar ajudam a dar sentido ao que sentem, a expressar emoções e a desenvolver recursos para enfrentar os desafios do crescimento.",
+    // bullets: [
+    //   "Depressão",
+    //   "Ansiedade generalizada",
+    //   "Ataques de pânico",
+    //   "Fobia social",
+    //   "Agorafobia",
+    //   "Perturbações alimentares",
+    //   "Trauma",
+    //   "Baixa autoestima",
+    // ],
+  },
+  {
+    icon: (
       <PsychologyIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Psicoterapia",
+    title: "Psicologia para Adultos",
     mainContent:
-      "Nas sessões individuais, trabalhamos para compreender o que está a causar sofrimento, reconhecer padrões de pensamento e comportamento e encontrar formas de lidar com as dificuldades. O acompanhamento de adultos e adolescentes pode abordar:",
-    bullets: [
-      "Depressão",
-      "Ansiedade generalizada",
-      "Ataques de pânico",
-      "Fobia social",
-      "Agorafobia",
-      "Perturbações alimentares",
-      "Trauma",
-      "Baixa autoestima",
-    ],
+      "Um espaço de escuta e reflexão para compreender o que sente e trabalhar dificuldades que afetam o seu bem-estar, como ansiedade, tristeza, dificuldades nas relações ou momentos de mudança. O acompanhamento procura promover um maior conhecimento de si e construir novas formas de lidar com os desafios da vida.",
+    // bullets: [
+    //   "Luto e perdas",
+    //   "Mudanças e desafios do dia a dia",
+    //   "Dificuldades nas relações",
+    //   "Dificuldades de comunicação",
+    //   "Desafios da parentalidade",
+    // ],
   },
   {
     icon: (
-      <ConnectWithoutContactIcon
+      <FamilyRestroomIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Aconselhamento psicológico",
+    title: "Aconselhamento Parental",
     mainContent:
-      "Um espaço para falar sobre uma dificuldade concreta, ponderar decisões e encontrar formas de enfrentar mudanças pessoais, familiares ou profissionais. O aconselhamento pode ajudar em situações como:",
-    bullets: [
-      "Luto e perdas",
-      "Mudanças e desafios do dia a dia",
-      "Dificuldades nas relações",
-      "Dificuldades de comunicação",
-      "Desafios da parentalidade",
-    ],
+      "Apoio a pais e cuidadores nas dúvidas e nos desafios de educar e acompanhar o crescimento dos filhos. Um espaço para compreender as necessidades emocionais das crianças e adolescentes, refletir sobre as dinâmicas familiares e encontrar estratégias ajustadas a cada família, fortalecendo a relação entre pais e filhos.",
   },
   {
     icon: (
-      <GroupIcon
+      <SchoolIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Terapia de casal",
+    title: "Orientação Vocacional",
     mainContent:
-      "Nas consultas de casal, há espaço para ouvir os dois pontos de vista, compreender os conflitos e trabalhar a comunicação. O objetivo é ajudar o casal a clarificar o que precisa e a tomar decisões sobre a relação.",
-  },
-  {
-    icon: (
-      <LanguageIcon
-        sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
-      />
-    ),
-    title: "Consultas de psicologia online",
-    mainContent:
-      "O acompanhamento à distância permite realizar as sessões sem se deslocar ao consultório no Seixal. Para saber se esta modalidade se adequa ao que procura e esclarecer como funcionam as consultas, entre em contacto comigo.",
+      "Apoio na exploração de interesses, capacidades e valores pessoais, para facilitar escolhas escolares, académicas e profissionais. Através de um processo de autoconhecimento e de reflexão sobre os percursos possíveis, procura-se ajudar cada pessoa a tomar decisões mais conscientes e alinhadas com aquilo que faz sentido para si.",
   },
 ];
 export const serviceInfoData = [

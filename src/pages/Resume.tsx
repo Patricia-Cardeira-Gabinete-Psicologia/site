@@ -19,9 +19,9 @@ export default function Resume() {
         <Grid container spacing={{ xs: 3, md: 8 }}>
           <Grid item xs={12} md={4}>
             <SectionHeading id="resume-title">Sobre mim</SectionHeading>
-            <Typography sx={{ maxWidth: 300, color: "primary.dark", fontSize: 18, fontWeight: 600, lineHeight: 1.5 }}>
+            {/* <Typography sx={{ maxWidth: 300, color: "primary.dark", fontSize: 18, fontWeight: 600, lineHeight: 1.5 }}>
               Patrícia Cardeira. Consultas de psicologia no Seixal e online.
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid item xs={12} md={8}>
             <Stack spacing={2} sx={{ maxWidth: 760 }}>

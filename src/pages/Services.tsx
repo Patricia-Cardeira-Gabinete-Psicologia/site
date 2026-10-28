@@ -33,7 +33,7 @@ export default function Services() {
                   {serviceItem.mainContent}
                 </Typography>
 
-                {serviceItem.bullets && (
+                {/* {serviceItem.bullets && (
                   <Box
                     component="ul"
                     sx={{
@@ -55,7 +55,7 @@ export default function Services() {
                       </Box>
                     ))}
                   </Box>
-                )}
+                )} */}
               </Box>
             </Grid>
           ))}
