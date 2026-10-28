@@ -2,9 +2,10 @@ import { Grid, Stack, Typography } from "@mui/material";
 import SectionHeading from "@/components/SectionHeading";
 
 const paragraphs = [
-  "Sou Patrícia Cardeira, psicóloga. A minha prática centra-se no acompanhamento psicológico de adultos e adolescentes, com consultas presenciais no Seixal e consultas online.",
-  "Em consulta, procuro compreender as dificuldades de cada pessoa no contexto da sua história e das suas relações. A ansiedade, a tristeza, a baixa autoestima, o luto e as mudanças do dia a dia são alguns dos temas que podemos trabalhar em conjunto.",
-  "O meu trabalho inclui psicoterapia individual, aconselhamento psicológico e terapia de casal. O acompanhamento começa por perceber o que a leva a procurar apoio e definir consigo os objetivos das sessões, com respeito pela sua privacidade e pelo seu ritmo.",
+  "Sou a Patrícia Cardeira, psicóloga clínica, formada pelo ISPA e membro efetivo da Ordem dos Psicólogos Portugueses. O meu percurso, em contextos hospitalares, clínicos e comunitários, tem sido especialmente próximo das crianças, dos adolescentes e das suas famílias.",
+  "Gosto de pensar a consulta como um encontro onde há lugar para o que se diz, para o que ainda não encontra palavras e para o que, por vezes, se revela a brincar.",
+  "A minha prática, de orientação psicanalítica, parte dessa escuta para compreender as emoções, a história e as relações de cada pessoa. Acompanho também adultos, apoio pais nos desafios da parentalidade e desenvolvo processos de orientação vocacional.",
+  "Em cada acompanhamento, procuro construir uma relação de confiança, onde seja possível olhar para o que se sente com mais compreensão e descobrir, ao seu próprio ritmo, novas formas de estar consigo e com os outros."
 ];
 
 export default function Resume() {

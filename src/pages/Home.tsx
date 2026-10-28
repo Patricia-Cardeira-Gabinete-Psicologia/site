@@ -64,9 +64,7 @@ export default function Home() {
             component="p"
             sx={{ maxWidth: 500, color: "text.secondary", fontSize: { xs: 16, md: 17 }, lineHeight: 1.75 }}
           >
-            Sou Patrícia Cardeira, psicóloga. Nas consultas, podemos falar sobre o
-            que sente, compreender as suas dificuldades e trabalhar formas de lidar
-            com o que está a viver, ao seu ritmo.
+            Sou a Patrícia Cardeira, psicóloga clínica, e acredito que compreender começa por escutar. Na conversa, no silêncio e no brincar, procuro conhecer a história de quem chega até mim. Convido-o a conhecer um pouco da minha história e da forma como trabalho.
           </Typography>
 
           <Stack
