@@ -3,8 +3,8 @@ main = "contact-worker.js"
 compatibility_date = "2026-10-28"
 
 [vars]
-CONTACT_ORIGIN = "https://psychologapatriciacardeira.pt"
-CONTACT_HOSTNAME = "psychologapatriciacardeira.pt"
+CONTACT_ORIGIN = "https://psicologapatriciacardeira.pt"
+CONTACT_HOSTNAME = "psicologapatriciacardeira.pt"
 EMAILJS_SERVICE_ID = "service_257kkgg"
 EMAILJS_TEMPLATE_ID = "template_yls49op"
 EMAILJS_PUBLIC_KEY = "GEooVe-H1luqn8SEe"

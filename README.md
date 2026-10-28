@@ -48,7 +48,7 @@ novamente o build para atualizar a versão estática.
 ### Formulário e Turnstile
 
 O formulário é estático; a verificação e o envio do email são feitos pelo Worker
-em `cloudflare/`. Crie uma chave de site Turnstile para `psychologapatriciacardeira.pt`
+em `cloudflare/`. Crie uma chave de site Turnstile para `psicologapatriciacardeira.pt`
 e configure a respetiva chave secreta no Worker:
 
 ```sh
