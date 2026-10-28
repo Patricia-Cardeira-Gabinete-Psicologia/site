@@ -1,4 +1,5 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import Script from "next/script";
 import {
   Alert,
   Box,
@@ -13,10 +14,26 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import SendIcon from "@mui/icons-material/Send";
-import emailjs from "@emailjs/browser";
-import { emailJsConfig } from "@/constants";
 import { GoogleMap } from "@/components/Map";
 import SectionHeading from "@/components/SectionHeading";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          sitekey: string;
+          language: "en";
+          callback: (token: string) => void;
+          "expired-callback": () => void;
+          "error-callback": () => void;
+        }
+      ) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 interface ContactFormData {
   name: string;
@@ -25,40 +42,74 @@ interface ContactFormData {
 }
 
 const emptyForm: ContactFormData = { name: "", email: "", message: "" };
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const contactApiUrl = process.env.NEXT_PUBLIC_CONTACT_API_URL;
 
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>(emptyForm);
   const [notification, setNotification] = useState<{ message: string; error: boolean } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileReady, setTurnstileReady] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | undefined>(undefined);
+
+  const renderTurnstile = useCallback(() => {
+    if (!turnstileReady || !turnstileSiteKey || !widgetRef.current || !window.turnstile || widgetIdRef.current) return;
+
+    widgetIdRef.current = window.turnstile.render(widgetRef.current, {
+      sitekey: turnstileSiteKey,
+      language: "en",
+      callback: setTurnstileToken,
+      "expired-callback": () => setTurnstileToken(""),
+      "error-callback": () => setTurnstileToken(""),
+    });
+  }, [turnstileReady]);
+
+  useEffect(() => {
+    renderTurnstile();
+  }, [renderTurnstile]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!formRef.current) return;
+    if (!formRef.current || !turnstileToken || !contactApiUrl) return;
 
     setIsSubmitting(true);
     try {
-      await emailjs.sendForm(
-        emailJsConfig.serviceId,
-        emailJsConfig.templateId,
-        formRef.current,
-        emailJsConfig.publicKey
-      );
+      const response = await fetch(contactApiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, turnstileToken }),
+      });
+      if (!response.ok) throw new Error("Contact request failed");
+
       setNotification({ message: "A sua mensagem foi enviada com sucesso.", error: false });
       setFormData(emptyForm);
       formRef.current.reset();
+      setTurnstileToken("");
+      if (widgetIdRef.current) window.turnstile?.reset(widgetIdRef.current);
     } catch {
       setNotification({
         message: "Não foi possível enviar a mensagem. Tente novamente ou contacte-me por telefone ou email.",
         error: true,
       });
+      setTurnstileToken("");
+      if (widgetIdRef.current) window.turnstile?.reset(widgetIdRef.current);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+
   return (
-    <section
+    <>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        strategy="afterInteractive"
+        onLoad={() => setTurnstileReady(true)}
+      />
+      <section
       className="content-section"
       id="contact"
       aria-labelledby="contact-title"
@@ -166,10 +217,16 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
                 />
+                <Box ref={widgetRef} sx={{ minHeight: 65 }} aria-label="Verificação de segurança" />
+                {!turnstileSiteKey || !contactApiUrl ? (
+                  <Typography role="alert" color="error" variant="body2">
+                    O formulário está temporariamente indisponível.
+                  </Typography>
+                ) : null}
                 <Button
                   type="submit"
                   variant="contained"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !turnstileToken || !contactApiUrl}
                   endIcon={<SendIcon />}
                   sx={{ alignSelf: { xs: "stretch", sm: "flex-start" }, minHeight: 48, px: 3, borderRadius: "4px", boxShadow: "none" }}
                 >
@@ -191,6 +248,7 @@ export default function Contact() {
           {notification?.message}
         </Alert>
       </Snackbar>
-    </section>
+      </section>
+    </>
   );
 }

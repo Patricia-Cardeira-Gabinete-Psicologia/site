@@ -44,3 +44,21 @@ npm start
 O comando de build gera o site estático em `out/`, de acordo com `next.config.js`.
 O comando `start` serve essa pasta. Após alterar os textos, é necessário gerar
 novamente o build para atualizar a versão estática.
+
+### Formulário e Turnstile
+
+O formulário é estático; a verificação e o envio do email são feitos pelo Worker
+em `cloudflare/`. Crie uma chave de site Turnstile para `psychologapatriciacardeira.pt`
+e configure a respetiva chave secreta no Worker:
+
+```sh
+cd cloudflare
+npx wrangler secret put TURNSTILE_SECRET_KEY
+npx wrangler deploy
+```
+
+Defina `NEXT_PUBLIC_TURNSTILE_SITE_KEY` com a chave pública e
+`NEXT_PUBLIC_CONTACT_API_URL` com o URL publicado do Worker no ambiente de build
+do site. Depois gere novamente o site estático. O Worker já restringe pedidos à
+origem e ao hostname do domínio configurados em `wrangler.toml`; ajuste ambos se
+o domínio de publicação mudar.
