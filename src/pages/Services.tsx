@@ -5,7 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 
 export default function Services() {
   return (
-    <section className="content-section" id="services" aria-labelledby="services-title">
+    <section className="content-section" id="services" aria-labelledby="services-title" style={{ backgroundColor: "var(--page-bg)" }}>
       <div className="section-inner">
         <SectionHeading id="services-title">Serviços</SectionHeading>
         <Grid container columnSpacing={{ xs: 0, md: 6 }} rowSpacing={{ xs: 4, md: 5 }}>

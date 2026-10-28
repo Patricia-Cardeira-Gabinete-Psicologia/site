@@ -62,7 +62,7 @@ export default function Contact() {
       className="content-section"
       id="contact"
       aria-labelledby="contact-title"
-      style={{ backgroundColor: "#e6eeea" }}
+      style={{ backgroundColor: "var(--page-bg)" }}
     >
       <div className="section-inner">
         <SectionHeading id="contact-title">Contactos</SectionHeading>
