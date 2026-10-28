@@ -79,7 +79,7 @@ export default {
         from: env.RESEND_FROM_EMAIL,
         to: [env.CONTACT_EMAIL_TO],
         reply_to: email.trim(),
-        subject: "Nova mensagem do formulário de contacto",
+        subject: "Pedido de contato do site",
         text: `Nome: ${name.trim()}\nEmail: ${email.trim()}\n\nMensagem:\n${message.trim()}`,
       }),
     });
