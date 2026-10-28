@@ -12,150 +12,66 @@ import {
 } from "@mui/material";
 import { useCallback, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import { NavbarProps } from ".";
+import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
-const backgroundImg = "./static/logo.png";
+import Image from "next/image";
+import { NavbarProps } from ".";
 
-const MobileNavbar = ({
-  menuOptions,
-  selectedSectionId,
-  onOptionClick,
-}: NavbarProps) => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+export default function MobileNavbar({ menuOptions, selectedSectionId, onOptionClick }: NavbarProps) {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const handleDrawerToggle = useCallback(() => {
-    setIsDrawerOpen((prevIsDrawerOpen) => !prevIsDrawerOpen);
+    setIsDrawerOpen((open) => !open);
   }, []);
 
-  const container =
-    window !== undefined ? () => window.document.body : undefined;
-  const drawerWidth = 240;
+  const container = typeof window !== "undefined" ? () => window.document.body : undefined;
 
-  const logoEl = (
+  const logo = (
     <Link
-      className="btn"
-      aria-label="Voltar à página inicial"
-      href={
-        typeof window !== "undefined"
-          ? `${window.location.origin}/#home`
-          : `/#home`
-      }
-      style={{ textDecoration: "none", color: "black" }}
-      onClick={() => {
-        onOptionClick("");
-      }}
+      aria-label="Patrícia Cardeira — início"
+      href="/#home"
+      onClick={() => onOptionClick("")}
+      style={{ color: "inherit", textDecoration: "none", display: "flex", minHeight: 48, alignItems: "center" }}
     >
-      <Typography
-        variant="h6"
-        component="div"
-        sx={{ padding: "16px 8px", color: "black" }}
-      >
-        <Stack direction="row" alignItems="center">
-          <div
-            style={{
-              backgroundColor: "green",
-              background: `url(${backgroundImg})`,
-              height: 28,
-              width: 28,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "left",
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          ></div>
-          <Stack>
-            <Typography component="div" sx={{ fontWeight: 400 }}>
-              Patrícia Cardeira
-            </Typography>
-          </Stack>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        <Image
+          src="/static/logo-monogram.png"
+          alt=""
+          aria-hidden="true"
+          width={44}
+          height={44}
+          priority
+          style={{ display: "block", flexShrink: 0, objectFit: "contain" }}
+        />
+        <Stack spacing={0}>
+          <Typography sx={{ fontWeight: 600, fontSize: 16, lineHeight: 1.25 }}>
+            Patrícia Cardeira
+          </Typography>
+          <Typography sx={{ color: "text.secondary", fontSize: 11, lineHeight: 1.3 }}>
+            Psicóloga
+          </Typography>
         </Stack>
-      </Typography>
+      </Stack>
     </Link>
-  );
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      {logoEl}
-      <Divider />
-      <List>
-        {menuOptions.map((item) => (
-          <Link
-            key={item.label}
-            className="btn"
-            aria-label={item.label}
-            href={
-              typeof window !== "undefined"
-                ? `${window.location.origin}/#${item.routePath}`
-                : `/#${item.routePath}`
-            }
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <ListItemButton
-              disableRipple={true}
-              disableTouchRipple={true}
-              sx={{
-                textAlign: "center",
-                color: "black",
-                textTransform: "none",
-                backgroundColor: "transparent",
-                "&.MuiButtonBase-root": {
-                  "&:hover": {
-                    background: "transparent",
-                    color: "#477B85",
-                  },
-                  "&:active": {
-                    background: "transparent",
-                    color: "#477B85",
-                  },
-                },
-              }}
-              onClick={() => onOptionClick(item.routePath)}
-            >
-              <Typography
-                component="div"
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 300,
-                  lineHeight: "21px",
-                }}
-              >
-                {item.label}
-                {selectedSectionId === item.routePath && (
-                  <div
-                    style={{
-                      height: "2px",
-                      width: "100%",
-                      background:
-                        "linear-gradient(90deg, rgba(111,168,184,1) 0%, rgba(61,114,128,1) 100%)",
-                    }}
-                  ></div>
-                )}
-              </Typography>
-            </ListItemButton>
-          </Link>
-        ))}
-      </List>
-    </Box>
   );
 
   return (
     <>
-      <AppBar component="nav" style={{ backgroundColor: "white" }}>
-        <Toolbar style={{ justifyContent: "space-between" }}>
-          {logoEl}
+      <AppBar
+        component="nav"
+        aria-label="Navegação principal"
+        elevation={0}
+        sx={{ bgcolor: "rgba(244, 245, 241, 0.97)", color: "text.primary", borderBottom: "1px solid #d6e0dc", backdropFilter: "blur(12px)" }}
+      >
+        <Toolbar sx={{ minHeight: "68px !important", px: "20px !important", justifyContent: "space-between" }}>
+          {logo}
           <IconButton
-            color="inherit"
-            aria-label="Abrir menu"
-            edge="start"
+            aria-label={isDrawerOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isDrawerOpen}
+            aria-controls="mobile-navigation"
             onClick={handleDrawerToggle}
-            sx={{
-              display: { sm: "none" },
-              color: "black",
-              margin: 0,
-            }}
+            sx={{ width: 44, height: 44, color: "primary.main", border: "1px solid #d6e0dc", borderRadius: "4px" }}
           >
-            <MenuIcon />
+            {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -163,25 +79,52 @@ const MobileNavbar = ({
       <Drawer
         container={container}
         variant="temporary"
+        anchor="right"
         open={isDrawerOpen}
-        disableScrollLock={true}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
+        onClose={() => setIsDrawerOpen(false)}
+        ModalProps={{ keepMounted: true }}
         sx={{
-          display: { xs: "block", sm: "none" },
+          display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
-            width: drawerWidth,
-            borderRadius: "0 4px",
+            width: "min(320px, calc(100vw - 40px))",
+            bgcolor: "background.default",
           },
         }}
       >
-        {drawer}
+        <Box id="mobile-navigation" sx={{ p: 2.5 }}>
+          <Box sx={{ py: 1.5 }}>{logo}</Box>
+          <Divider sx={{ my: 2, borderColor: "#d6e0dc" }} />
+          <List disablePadding>
+            {menuOptions.map((item) => (
+              <ListItemButton
+                key={item.routePath}
+                component={Link}
+                href={`/#${item.routePath}`}
+                selected={selectedSectionId === item.routePath}
+                onClick={() => {
+                  onOptionClick(item.routePath);
+                  setIsDrawerOpen(false);
+                }}
+                sx={{
+                  minHeight: 48,
+                  mb: 0.5,
+                  px: 1.5,
+                  borderRadius: "4px",
+                  color: selectedSectionId === item.routePath ? "primary.main" : "text.primary",
+                  "&.Mui-selected": { bgcolor: "primary.light" },
+                  "&.Mui-selected:hover": { bgcolor: "primary.light" },
+                  "&:hover": { bgcolor: "rgba(23, 107, 110, 0.06)" },
+                }}
+              >
+                <Typography sx={{ fontWeight: selectedSectionId === item.routePath ? 600 : 500 }}>
+                  {item.label}
+                </Typography>
+              </ListItemButton>
+            ))}
+          </List>
+        </Box>
       </Drawer>
     </>
   );
-};
-
-export default MobileNavbar;
+}

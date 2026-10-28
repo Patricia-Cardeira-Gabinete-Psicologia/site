@@ -1,91 +1,61 @@
-import {
-  Box,
-  ImageList,
-  ImageListItem,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { useMemo } from "react";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import SectionHeading from "@/components/SectionHeading";
 
-const itemData = [
-  {
-    imgPath: "/static/office_2.jpg",
-  },
-  {
-    imgPath: "/static/office_1.jpg",
-  },
-  {
-    imgPath: "/static/office_4.jpg",
-  }
+const officeImages = [
+  "/static/office_2.jpg",
+  "/static/office_1.jpg",
+  "/static/office_4.jpg",
 ];
 
 export default function Office() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const titleEl = useMemo(() => {
-    return (
-      <Stack justifyContent="center" alignItems="center" mb="32px">
-        <Typography
-          sx={{
-            width: "100%",
-            textAlign: "center",
-            fontWeight: 300,
-            fontSize: isMobile ? "32px" : "36px",
-          }}
-          id="office-title"
-          role="heading"
-        >
-          O nosso consultório
-        </Typography>
-        <div
-          style={{
-            marginTop: "16px",
-            height: "4px",
-            width: "262px",
-            background:
-              "linear-gradient(90deg, rgba(111,168,184,1) 0%, rgba(61,114,128,1) 100%)",
-          }}
-        ></div>
-      </Stack>
-    );
-  }, [isMobile]);
-
   return (
     <section
-      className="section flex flex-col items-center min-h-screen bg-gray-100"
+      className="content-section"
       id="office"
-      style={{
-        height: "fit-content",
-        padding: "64px 0",
-        margin: "auto",
-      }}
       aria-labelledby="office-title"
+      style={{ backgroundColor: "#e6eeea" }}
     >
-      {titleEl}
-      <Box sx={{ width: "75%", margin: "auto", height: "fit-content" }}>
-        <ImageList variant="masonry" cols={3} gap={8} aria-label="Fotografias do consultório">
-          {itemData.map((item, idx) => (
-            <ImageListItem key={item.imgPath}>
+      <div className="section-inner">
+        <SectionHeading id="office-title">Consultório</SectionHeading>
+        <Typography component="p" sx={{ mb: 4, maxWidth: 760, color: "text.secondary", fontSize: 16, lineHeight: 1.75 }}>
+          As consultas presenciais decorrem no meu consultório no Seixal, na Praceta
+          Quinta das Parreiras. Para pedir uma consulta ou esclarecer como chegar,
+          pode contactar-me por telefone, email ou através do formulário abaixo.
+        </Typography>
+        <Box
+          role="group"
+          aria-label="Fotografias do consultório"
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 1fr))" },
+            gridTemplateRows: { xs: "auto", md: "repeat(2, 240px)" },
+            gap: { xs: 2, md: 2.5 },
+            "& > div:first-of-type": { gridRow: { xs: "auto", md: "span 2" } },
+          }}
+        >
+          {officeImages.map((src, index) => (
+            <Box
+              key={src}
+              sx={{
+                position: "relative",
+                minHeight: { xs: 240, sm: 220, md: 0 },
+                aspectRatio: { xs: "4 / 3", md: "auto" },
+                overflow: "hidden",
+                bgcolor: "#d6e0dc",
+              }}
+            >
               <Image
-                src={item.imgPath}
-                height={248}
-                width={248}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-                quality={100}
-                alt={`Fotografia do consultório ${idx + 1}`}
-                loading="lazy"
+                src={src}
+                alt={`Espaço do consultório, fotografia ${index + 1}`}
+                fill
+                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 700px"
+                style={{ objectFit: "cover" }}
               />
-            </ImageListItem>
+            </Box>
           ))}
-        </ImageList>
-      </Box>
+        </Box>
+      </div>
     </section>
   );
 }

@@ -1,12 +1,135 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height: 1.6;
-  font-size: 18px;
+:root {
+  --page-bg: #f4f5f1;
+  --paper: #ffffff;
+  --ink: #203b38;
+  --muted: #526966;
+  --brand: #176b6e;
+  --brand-bright: #17888d;
+  --sage: #e6eeea;
+  --line: #d6e0dc;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
 
+html,
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+.content-section {
+  width: 100%;
+  padding: clamp(68px, 8vw, 104px) 24px;
+}
+
+.section-inner {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+}
+
+.section-heading {
+  margin: 0 0 clamp(32px, 4vw, 48px);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.16;
+  text-align: left;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin-top: 16px;
+  border-radius: 2px;
+  background: var(--brand-bright);
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(23, 107, 110, 0.48);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.site-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--page-bg);
+  text-align: center;
+  color: var(--muted);
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-section {
+    padding: 60px 20px;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

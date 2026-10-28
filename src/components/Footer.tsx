@@ -1,25 +1,8 @@
 const Footer = () => {
   return (
-    <>
-      <hr />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <p
-          style={{
-            fontWeight: 300,
-            fontSize: "12px",
-            color: "rgb(102, 102, 102)",
-          }}
-        >
-          &copy; {new Date().getFullYear()} Patrícia Cardeira. Todos os direitos reservados.
-        </p>
-      </div>
-    </>
+    <footer className="site-footer">
+      <p>&copy; {new Date().getFullYear()} Patrícia Cardeira. Todos os direitos reservados.</p>
+    </footer>
   );
 };
 

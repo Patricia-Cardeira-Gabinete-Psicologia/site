@@ -7,6 +7,9 @@ import PsychologyIcon from "@mui/icons-material/Psychology";
 import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
 import GroupIcon from "@mui/icons-material/Group";
 import LanguageIcon from "@mui/icons-material/Language";
+import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
+import ExtensionIcon from '@mui/icons-material/Extension';
+import SchoolIcon from '@mui/icons-material/School';
 
 export const blue = {
   100: "#DAECFF",
@@ -49,7 +52,7 @@ export const websiteUrl = 'https://localhost:3000'
 export const menuOptions = [
   { label: "Início", routePath: "home" },
   {
-    label: "Biografia",
+    label: "Sobre mim",
     routePath: "resume",
   },
   {
@@ -57,12 +60,8 @@ export const menuOptions = [
     routePath: "services",
   },
   {
-    label: "O nosso consultório",
+    label: "Consultório",
     routePath: "office",
-  },
-  {
-    label: "Registo profissional",
-    routePath: "professional-registration",
   },
   {
     label: "Contactos",
@@ -75,69 +74,69 @@ export const metadata: {
   description: string;
   keywords: string;
 } = {
-  title: "Patrícia Cardeira - PSICÓLOGA",
-  description: "Patrícia Cardeira - Psicóloga especializada. Oferece aconselhamento psicológico, psicoterapia, psicologia clínica e consultas de psicologia para promover o bem-estar mental. Especializada no tratamento da ansiedade e da depressão, presta ajuda e apoio psicológico.",
-  keywords: "Patrícia Cardeira, Psicóloga, Aconselhamento psicológico, Psicoterapia, Psicologia clínica, Consultas de psicologia, Apoio emocional, Bem-estar mental, Psicologia infantil, Tratamento da ansiedade, Tratamento da depressão, Ajuda psicológica, Apoio psicológico, Serviços especializados de psicologia"
+  title: "Patrícia Cardeira | Psicóloga no Seixal e online",
+  description: "Consultas de psicologia com Patrícia Cardeira, no Seixal e online. Acompanhamento de adultos e adolescentes, aconselhamento psicológico e terapia de casal.",
+  keywords: "Patrícia Cardeira, psicóloga no Seixal, consultas de psicologia, acompanhamento psicológico, adultos e adolescentes, aconselhamento psicológico, psicoterapia, terapia de casal, consultas online"
 };
 
 
 export const services = [
   {
     icon: (
+      <ExtensionIcon
+        sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
+      />
+    ),
+    title: "Psicologia para Crianças e Adolescentes",
+    mainContent:
+      "Acompanhamento de crianças e adolescentes nas suas dificuldades emocionais, comportamentais e relacionais. Num espaço adaptado à idade e às necessidades de cada um, a conversa e o brincar ajudam a dar sentido ao que sentem, a expressar emoções e a desenvolver recursos para enfrentar os desafios do crescimento.",
+    // bullets: [
+    //   "Depressão",
+    //   "Ansiedade generalizada",
+    //   "Ataques de pânico",
+    //   "Fobia social",
+    //   "Agorafobia",
+    //   "Perturbações alimentares",
+    //   "Trauma",
+    //   "Baixa autoestima",
+    // ],
+  },
+  {
+    icon: (
       <PsychologyIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Psicoterapia",
+    title: "Psicologia para Adultos",
     mainContent:
-      "A psicoterapia individual assenta na construção de uma relação saudável de confiança e compreensão entre o terapeuta e a pessoa em acompanhamento. Através de uma comunicação sincera e da aceitação, a pessoa é encorajada a reconhecer e a gerir as suas dificuldades emocionais. É indicada nas seguintes situações:",
-    bullets: [
-      "Depressão",
-      "Ansiedade generalizada",
-      "Ataques de pânico",
-      "Fobia social",
-      "Agorafobia",
-      "Perturbações alimentares",
-      "Trauma",
-      "Baixa autoestima",
-    ],
+      "Um espaço de escuta e reflexão para compreender o que sente e trabalhar dificuldades que afetam o seu bem-estar, como ansiedade, tristeza, dificuldades nas relações ou momentos de mudança. O acompanhamento procura promover um maior conhecimento de si e construir novas formas de lidar com os desafios da vida.",
+    // bullets: [
+    //   "Luto e perdas",
+    //   "Mudanças e desafios do dia a dia",
+    //   "Dificuldades nas relações",
+    //   "Dificuldades de comunicação",
+    //   "Desafios da parentalidade",
+    // ],
   },
   {
     icon: (
-      <ConnectWithoutContactIcon
+      <FamilyRestroomIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Aconselhamento psicológico",
+    title: "Aconselhamento Parental",
     mainContent:
-      "O aconselhamento psicológico centra-se na melhoria do dia a dia e na procura de formas eficazes de lidar com os problemas. É indicado nas seguintes situações:",
-    bullets: [
-      "Luto",
-      "Dificuldades do dia a dia",
-      "Dificuldades nas relações interpessoais",
-      "Dificuldades na comunicação interpessoal",
-      "Dificuldades relacionadas com a parentalidade",
-    ],
+      "Apoio a pais e cuidadores nas dúvidas e nos desafios de educar e acompanhar o crescimento dos filhos. Um espaço para compreender as necessidades emocionais das crianças e adolescentes, refletir sobre as dinâmicas familiares e encontrar estratégias ajustadas a cada família, fortalecendo a relação entre pais e filhos.",
   },
   {
     icon: (
-      <GroupIcon
+      <SchoolIcon
         sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
       />
     ),
-    title: "Terapia de casal",
+    title: "Orientação Vocacional",
     mainContent:
-      "O principal objetivo é proporcionar ao casal os recursos e as ferramentas adequados para melhorar a comunicação e encontrar soluções para eventuais dificuldades na relação.",
-  },
-  {
-    icon: (
-      <LanguageIcon
-        sx={{ color: colorPalette.main, width: "32px", height: "32px" }}
-      />
-    ),
-    title: "Consultas à distância",
-    mainContent:
-      "Todos os serviços acima estão também disponíveis à distância, através da Internet, quando a distância ou outras dificuldades impedem a deslocação ao consultório.",
+      "Apoio na exploração de interesses, capacidades e valores pessoais, para facilitar escolhas escolares, académicas e profissionais. Através de um processo de autoconhecimento e de reflexão sobre os percursos possíveis, procura-se ajudar cada pessoa a tomar decisões mais conscientes e alinhadas com aquilo que faz sentido para si.",
   },
 ];
 export const serviceInfoData = [

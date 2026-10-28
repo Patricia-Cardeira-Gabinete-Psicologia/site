@@ -1,178 +1,66 @@
-import {
-  Grid,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { colorPalette, services } from "@/constants";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import { useMemo } from "react";
-
-function ServiceCard(data: any) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  let serviceItem = data.serviceItem;
-  return (
-    <Stack
-      sx={{
-        border: "1px solid #efefef",
-        padding: "24px 16px",
-        borderRadius: "16px",
-        height: isMobile ? "fit-content" : "100%",
-        minHeight: isMobile || serviceItem.bullets ? undefined : "212px",
-        boxShadow: "9px 14px 42px -4px rgba(0,0,0,0.10)",
-      }}
-    >
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        mb="16px"
-      >
-        {serviceItem.icon}
-        <Typography
-          component="h2"
-          variant="h5"
-          sx={{
-            marginLeft: "4px",
-            fontWeight: 400,
-            fontSize: isMobile ? '19px' : '24px'
-          }}
-          id={`service-title-${serviceItem.title}`}
-        >
-          {serviceItem.title}
-        </Typography>
-      </Stack>
-
-      <Typography
-        component="p"
-        variant="body1"
-        sx={{
-          padding: "0 16px",
-          fontWeight: 300,
-          fontSize: isMobile ? '15px' : '19px',
-          letterSpacing: '0.039em'
-        }}
-      >
-        {serviceItem.mainContent}
-      </Typography>
-
-      <Grid
-        container
-        spacing={2}
-        sx={{
-          display: "flex",
-          width: "calc(100% - 32px)",
-          maxWidth: "100%",
-          flexWrap: "wrap",
-          margin: "16px 0",
-        }}
-      >
-        {serviceItem.bullets && serviceItem.bullets.map((bulletText: string, idx: number) => {
-          return (
-            <Grid
-              item
-              xs={6}
-              md={6}
-              sx={{ minWidth: "135px" }}
-              key={`service-${serviceItem.title}-bullet-${idx}`}
-            >
-              <Stack direction="row" sx={{ margin: "4px 0" }}>
-                <CheckIcon sx={{ color: colorPalette.main }} />
-                <Typography
-                  component="p"
-                  sx={{
-                    marginLeft: "4px",
-                    fontWeight: 300,
-                    fontSize: isMobile ? '14px' : '18px',
-                    letterSpacing: '0.039em'
-                  }}
-                  variant="body2"
-                >
-                  {bulletText}
-                </Typography>
-              </Stack>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Stack>
-  );
-}
+import { colorPalette, services } from "@/constants";
+import SectionHeading from "@/components/SectionHeading";
 
 export default function Services() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const titleEl = useMemo(() => {
-    return (
-      <Stack justifyContent="center" alignItems="center" mb="32px">
-        <Typography
-          sx={{
-            width: "100%",
-            textAlign: "center",
-            fontWeight: 300,
-            fontSize: isMobile ? '32px' : '36px'
-          }}
-          id="services-title"
-          role="heading"
-        >
-          Serviços
-        </Typography>
-        <div
-          style={{
-            marginTop: '16px',
-            height: "4px",
-            width: "190px",
-            background:
-              "linear-gradient(90deg, rgba(111,168,184,1) 0%, rgba(61,114,128,1) 100%)",
-          }}
-        ></div>
-      </Stack>
-    );
-  }, [isMobile]);
-
   return (
-    <section
-      className="section grid place-content-center min-h-screen bg-gray-100"
-      id="services"
-      style={{
-        height: "fit-content",
-        width: '100%',
-        padding: "64px 0",
-        marginBottom: "32px",
-      }}
-      aria-labelledby="services-title"
-    >
-      {titleEl}
-      <Grid
-        container
-        spacing={2}
-        sx={{
-          height: "calc(100% - 124px)",
-          "&.MuiGrid-root": {
-            width: "75%",
-            margin: "auto",
-          },
-        }}
-      >
-        {services.map((serviceItem, idx) => {
-          return (
-            <Grid
-              item
-              xs={12}
-              md={12}
-              lg={6}
-              key={`service-item-${idx}`}
-              aria-labelledby={`service-title-${serviceItem.title}`}
-            >
-              <ServiceCard serviceItem={serviceItem} />
+    <section className="content-section" id="services" aria-labelledby="services-title" style={{ backgroundColor: "var(--page-bg)" }}>
+      <div className="section-inner">
+        <SectionHeading id="services-title">Serviços</SectionHeading>
+        <Grid container columnSpacing={{ xs: 0, md: 6 }} rowSpacing={{ xs: 4, md: 5 }}>
+          {services.map((serviceItem, index) => (
+            <Grid item xs={12} md={6} key={serviceItem.title}>
+              <Box
+                component="article"
+                aria-labelledby={`service-title-${index}`}
+                sx={{ height: "100%", borderTop: "1px solid var(--line)", pt: 2.5 }}
+              >
+                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 1.5 }}>
+                  <Box aria-hidden="true" sx={{ display: "flex", color: colorPalette.main }}>
+                    {serviceItem.icon}
+                  </Box>
+                  <Typography
+                    component="h3"
+                    id={`service-title-${index}`}
+                    sx={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: 23, lineHeight: 1.25, color: "text.primary" }}
+                  >
+                    {serviceItem.title}
+                  </Typography>
+                </Stack>
+
+                <Typography component="p" sx={{ m: 0, color: "text.secondary", fontSize: 16, lineHeight: 1.75 }}>
+                  {serviceItem.mainContent}
+                </Typography>
+
+                {/* {serviceItem.bullets && (
+                  <Box
+                    component="ul"
+                    sx={{
+                      display: "grid",
+                      gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 1fr))" },
+                      gap: "10px 20px",
+                      listStyle: "none",
+                      m: 0,
+                      mt: 2.5,
+                      p: 0,
+                    }}
+                  >
+                    {serviceItem.bullets.map((bullet) => (
+                      <Box component="li" key={bullet} sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
+                        <CheckIcon aria-hidden="true" sx={{ color: colorPalette.main, fontSize: 18, mt: "3px", flexShrink: 0 }} />
+                        <Typography component="span" sx={{ color: "text.primary", fontSize: 14, lineHeight: 1.5 }}>
+                          {bullet}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                )} */}
+              </Box>
             </Grid>
-          );
-        })}
-      </Grid>
+          ))}
+        </Grid>
+      </div>
     </section>
   );
 }
