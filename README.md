@@ -45,17 +45,24 @@ O comando de build gera o site estático em `out/`, de acordo com `next.config.j
 O comando `start` serve essa pasta. Após alterar os textos, é necessário gerar
 novamente o build para atualizar a versão estática.
 
-### Formulário e Turnstile
+### Formulário, Turnstile e email
 
 O formulário é estático; a verificação e o envio do email são feitos pelo Worker
 em `cloudflare/`. Crie uma chave de site Turnstile para `psicologapatriciacardeira.pt`
-e configure a respetiva chave secreta no Worker:
+e configure a respetiva chave secreta e a chave da API Resend no Worker:
 
 ```sh
 cd cloudflare
 npx wrangler secret put TURNSTILE_SECRET_KEY
+npx wrangler secret put RESEND_API_KEY
 npx wrangler deploy
 ```
+
+Verifique o domínio `psicologapatriciacardeira.pt` na Resend para autorizar o
+remetente `no-reply@psicologapatriciacardeira.pt` (não precisa de uma caixa de
+email). O destinatário está configurado em `wrangler.toml`. Para diagnosticar
+falhas, execute `npx wrangler tail site-contact-form` e envie o formulário
+novamente; os logs mostram o status e a resposta de erro da Resend.
 
 Defina `NEXT_PUBLIC_TURNSTILE_SITE_KEY` com a chave pública e
 `NEXT_PUBLIC_CONTACT_API_URL` com o URL publicado do Worker no ambiente de build

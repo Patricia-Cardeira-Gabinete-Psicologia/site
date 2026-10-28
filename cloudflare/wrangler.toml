@@ -5,6 +5,5 @@ compatibility_date = "2026-10-28"
 [vars]
 CONTACT_ORIGIN = "https://psicologapatriciacardeira.pt"
 CONTACT_HOSTNAME = "psicologapatriciacardeira.pt"
-EMAILJS_SERVICE_ID = "service_257kkgg"
-EMAILJS_TEMPLATE_ID = "template_yls49op"
-EMAILJS_PUBLIC_KEY = "GEooVe-H1luqn8SEe"
+RESEND_FROM_EMAIL = "Formulário do site <no-reply@psicologapatriciacardeira.pt>"
+CONTACT_EMAIL_TO = "psicologa.patriciacardeira@gmail.com"

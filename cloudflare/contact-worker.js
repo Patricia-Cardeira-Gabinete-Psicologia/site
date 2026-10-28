@@ -1,5 +1,5 @@
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-const EMAILJS_SEND_URL = "https://api.emailjs.com/api/v1.0/email/send";
+const RESEND_SEND_URL = "https://api.resend.com/emails";
 
 function response(body, status, origin) {
   return new Response(JSON.stringify(body), {
@@ -69,17 +69,25 @@ export default {
       return response({ error: "Verification failed" }, 403, env.CONTACT_ORIGIN);
     }
 
-    const emailResult = await fetch(EMAILJS_SEND_URL, {
+    const emailResult = await fetch(RESEND_SEND_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        service_id: env.EMAILJS_SERVICE_ID,
-        template_id: env.EMAILJS_TEMPLATE_ID,
-        user_id: env.EMAILJS_PUBLIC_KEY,
-        template_params: { name: name.trim(), email: email.trim(), message: message.trim() },
+        from: env.RESEND_FROM_EMAIL,
+        to: [env.CONTACT_EMAIL_TO],
+        reply_to: email.trim(),
+        subject: "Nova mensagem do formulário de contacto",
+        text: `Nome: ${name.trim()}\nEmail: ${email.trim()}\n\nMensagem:\n${message.trim()}`,
       }),
     });
     if (!emailResult.ok) {
+      console.error("Resend delivery rejected", {
+        status: emailResult.status,
+        response: await emailResult.text(),
+      });
       return response({ error: "Email delivery failed" }, 502, env.CONTACT_ORIGIN);
     }
     return response({ success: true }, 200, env.CONTACT_ORIGIN);

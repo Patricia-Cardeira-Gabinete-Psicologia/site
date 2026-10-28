@@ -40,11 +40,6 @@ export const colorPalette = {
   secondary3: "#E7DEE4",
 };
 
-export const emailJsConfig = {
-  serviceId: "service_257kkgg",
-  templateId: "template_yls49op",
-  publicKey: "GEooVe-H1luqn8SEe",
-};
 
 export const websiteUrl = 'https://localhost:3000'
 //----------------------------------------------------
