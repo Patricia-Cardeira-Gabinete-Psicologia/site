@@ -1,14 +1,14 @@
 # Patrícia Cardeira — Psicóloga
 
-Site de apresentação de Patrícia Cardeira, com informação sobre o acompanhamento
-psicológico de adultos e adolescentes, os serviços e os contactos do consultório
-no Seixal.
+Site de apresentação de Patrícia Cardeira, com informação sobre psicologia para
+crianças, adolescentes e adultos, aconselhamento parental e orientação vocacional,
+com consultas presenciais no Seixal e online.
 
 ## Conteúdos
 
 - Apresentação e secção «Sobre mim».
-- Psicoterapia individual, aconselhamento psicológico, terapia de casal e consultas online.
-- Consultório, contactos, formulário de pedido de contacto e registo profissional.
+- Psicologia para crianças, adolescentes e adultos, aconselhamento parental e orientação vocacional.
+- Consultas presenciais no Seixal e online, contactos, formulário de pedido de contacto e registo profissional.
 
 Os selos profissionais ocupam até metade da largura da respetiva coluna, com
 limites de 270 px para a cédula da OPP e 210 px para o selo da ERS.

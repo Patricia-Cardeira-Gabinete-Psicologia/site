@@ -70,8 +70,8 @@ export const metadata: {
   keywords: string;
 } = {
   title: "Patrícia Cardeira | Psicóloga no Seixal e online",
-  description: "Consultas de psicologia com Patrícia Cardeira, no Seixal e online. Acompanhamento de adultos e adolescentes, aconselhamento psicológico e terapia de casal.",
-  keywords: "Patrícia Cardeira, psicóloga no Seixal, consultas de psicologia, acompanhamento psicológico, adultos e adolescentes, aconselhamento psicológico, psicoterapia, terapia de casal, consultas online"
+  description: "Psicologia para crianças, adolescentes e adultos, aconselhamento parental e orientação vocacional. Consultas presenciais no Seixal e online.",
+  keywords: "Patrícia Cardeira, psicóloga no Seixal, psicologia para crianças, psicologia para adolescentes, psicologia para adultos, aconselhamento parental, orientação vocacional, consultas presenciais, consultas online, acompanhamento psicológico"
 };
 
 

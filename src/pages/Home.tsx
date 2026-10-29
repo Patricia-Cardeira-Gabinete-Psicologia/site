@@ -53,12 +53,6 @@ export default function Home() {
             Patrícia Cardeira
           </Typography>
 
-          {/* <Typography
-            component="p"
-            sx={{ color: "primary.dark", fontSize: { xs: 18, md: 21 }, fontWeight: 600, lineHeight: 1.45 }}
-          >
-            Acompanhamento psicológico para adultos e adolescentes
-          </Typography> */}
 
           <Typography
             component="p"
