@@ -20,7 +20,7 @@ export default function Office() {
         <SectionHeading id="office-title">Consultório</SectionHeading>
         <Typography component="p" sx={{ mb: 4, maxWidth: 760, color: "text.secondary", fontSize: 16, lineHeight: 1.75 }}>
           As consultas presenciais decorrem no meu consultório no Seixal, na Praceta
-          Quinta das Parreiras. Para pedir uma consulta ou esclarecer como chegar,
+          Quinta das Parreiras. Para agendar uma consulta ou esclarecer como chegar,
           pode contactar-me por telefone, email ou através do formulário abaixo.
         </Typography>
         <Box

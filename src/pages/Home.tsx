@@ -80,7 +80,7 @@ export default function Home() {
               variant="outlined"
               sx={{ minHeight: 48, px: 3, borderRadius: "4px", borderWidth: "1.5px" }}
             >
-              Pedir uma consulta
+              Agendar consulta
             </Button>
           </Stack>
 

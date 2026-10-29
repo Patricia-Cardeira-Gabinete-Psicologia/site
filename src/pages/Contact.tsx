@@ -120,7 +120,7 @@ export default function Contact() {
         <Typography component="p" sx={{ mb: 4, maxWidth: 760, color: "text.secondary", fontSize: 16, lineHeight: 1.75 }}>
           Se procura apoio psicológico para crianças, adolescentes ou adultos,
           aconselhamento parental ou orientação vocacional, entre em contacto comigo
-          para esclarecer dúvidas ou pedir uma consulta presencial no Seixal ou online.
+          para esclarecer dúvidas ou agendar uma consulta presencial no Seixal ou online.
         </Typography>
         <Grid container spacing={{ xs: 5, lg: 8 }} alignItems="flex-start">
           <Grid item xs={12} lg={5} sx={{ order: { xs: 2, lg: 1 } }}>
