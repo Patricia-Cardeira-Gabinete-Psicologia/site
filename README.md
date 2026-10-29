@@ -27,6 +27,8 @@ confirmados com a própria antes de serem acrescentados.
 
 Projeto em Next.js, React, TypeScript e Material UI.
 
+Requer Node.js 20.9 ou superior.
+
 ```sh
 npm install
 npm run dev
